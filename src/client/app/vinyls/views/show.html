@@ -1,0 +1,46 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img ng-src="{{vm.vinyl.images.frontCover || 'images/vinyl-default.gif'}}" style="width: 100%">
+        </div>
+        <div class="col-sm-6">
+            <img  ng-src="{{vm.vinyl.images.backCover || 'images/vinyl-default.gif'}}" style="width: 100%">
+        </div>
+    </div>
+
+    <h2>
+        artist
+    </h2>
+    {{vm.vinyl.artist_id}}
+    <h3>
+        album
+    </h3>
+    {{vm.vinyl.album}}
+    <h3>
+        year
+    </h3>
+    {{vm.vinyl.year}}
+    <br>
+
+
+    <tracklist-editor></tracklist-editor>
+
+    <div ng-show="vm.isOwner">
+        <a href="#/vinyls/{{vm.vinyl._id}}/edit/">
+            <button type="button" class="btn btn-warning pull-right">Edit</button>
+        </a>
+        <button type="button" class="btn btn-danger pull-right" ng-click="vm.deleteVinyl(vm.vinyl)">Delete</button>
+    </div>
+
+    <reviews product="vm.vinyl" update-method="vm.updateVinylReview"></reviews>
+
+
+
+
+
+</div>
+
+
+
+

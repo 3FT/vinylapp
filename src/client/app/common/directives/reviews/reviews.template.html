@@ -1,0 +1,41 @@
+<div class="container"><!--  Product Reviews List -->
+    <h3>Reviews</h3>
+    <ul>
+    <li ng-repeat="review in product.reviews">
+        <blockquote>
+            <strong>{{review.stars}} Stars</strong>
+            {{review.body}}
+            <cite class="clearfix">—{{review.author}} on {{review.createdOn | date}}</cite>
+        </blockquote>
+    </li>
+</ul>
+
+
+<!--  Review Form -->
+<form name="reviewForm" ng-submit="reviewForm.$valid && rvm.addReview(product); updateMethod(product)" novalidate ng-show="rvm.isLoggedIn">
+<!--<form name="reviewForm" ng-submit="reviewForm.$valid*/ && rvm.addReview(rvm.review, reviews) && updateMethod(reviews)" novalidate>-->
+    <!--  Live Preview -->
+    <blockquote ng-show="rvm.review">
+        <strong>{{rvm.review.stars}} Stars</strong>
+        {{rvm.review.body}}
+        <cite class="clearfix">—{{rvm.review.author}}</cite>
+    </blockquote>
+
+    <!--  Review Form -->
+    <h4>Submit a Review</h4>
+    <fieldset class="form-group">
+        <select ng-model="rvm.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+            <option value>Rate the Product</option>
+        </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <textarea ng-model="rvm.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+    </fieldset>
+<!--    <fieldset class="form-group">
+        <input type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+    </fieldset>-->
+    <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+    </fieldset>
+</form>
+</div>

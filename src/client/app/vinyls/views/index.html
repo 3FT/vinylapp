@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div ng-repeat="vinyl in vm.vinyls" class="col-sm-4">
+            <a ng-href="#/vinyls/{{vinyl._id}}">
+                <img ng-src="{{vinyl.images.frontCover || 'images/vinyl-default.gif'}}" style="width: 100%">
+                <h2>
+                    {{vinyl.artist_id}}
+                </h2>
+                <h3>
+                    {{vinyl.album}}
+                </h3>
+                <p>added by: {{vinyl.addedBy}}</p>
+
+                <p>{{vm.getTime(vinyl.dateAdded)}}</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+

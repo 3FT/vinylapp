@@ -1,0 +1,39 @@
+
+<h3>tracklist</h3>
+<div class="tracklist" ng-hide="isReadOnly">
+
+
+    <!-- The dnd-list directive allows to drop elements into it.
+         The dropped data will be added to the referenced list -->
+
+    <!-- The dnd-list directive allows to drop elements into it.
+         The dropped data will be added to the referenced list -->
+    <ul dnd-list="vm.vinyl.tracklist">
+        <!-- The dnd-draggable directive makes an element draggable and will
+             transfer the object that was assigned to it. If an element was
+             dragged away, you have to remove it from the original list
+             yourself using the dnd-moved attribute -->
+        <li ng-repeat="item in vm.vinyl.tracklist"
+            dnd-draggable="item"
+            dnd-moved="vm.vinyl.tracklist.splice($index, 1)"
+            dnd-effect-allowed="move"
+            dnd-selected="models.selected = item"
+            ng-class="{'selected': models.selected === item}"
+        >
+            {{item.title}} <span class="glyphicon glyphicon-remove pull-right" style="color:red" ng-click="tvm.removeTrack(item, vm.vinyl)"></span>
+        </li>
+    </ul>
+    <input ng-model="tvm.track.title">
+    <input type="submit" class="btn btn-primary" value="add track" ng-click="tvm.addTrack(tvm.track, vm.vinyl)"/>
+
+
+
+</div>
+
+
+<ul class="list-group" ng-show="isReadOnly" >
+    <li class="list-group-item" ng-repeat="track in vm.vinyl.tracklist">
+        {{track.title}}
+    </li>
+
+</ul>

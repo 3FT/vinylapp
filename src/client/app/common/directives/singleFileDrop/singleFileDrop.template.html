@@ -1,0 +1,20 @@
+<span>
+    <div ng-hide="file"
+         ngf-drop
+         ngf-multiple="false"
+         ng-model="file"
+         name="avatar"
+         ngf-pattern="'image/*'"
+         ngf-accept="'image/*'"
+         ngf-max-size="20MB"
+         ngf-min-height="1"
+         ngf-resize="{width: 300, height: 300}"
+         class="upload-drop-zone">
+
+        {{caption}}
+
+    </div>
+    <img ng-show="file" ngf-thumbnail="file">
+    <br>
+    <button ng-show="file" type="button" class="btn btn-danger" ng-click="file = ''">remove</button>
+</span>
