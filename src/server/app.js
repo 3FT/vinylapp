@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var passport = require('passport');
+var fs = require('fs');
 
 require('./models/db');
 require('./config/passport');
@@ -47,7 +48,13 @@ app.get('/ping', function(req, res, next) {
     res.send('pong');
 });
 
-// common directory for uploads
+// create upload dir if it doesn't exist
+var dir = './public/uploads';
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
+// common directory for uploads and images
 app.use(express.static('./public/'));
 
 switch (environment) {

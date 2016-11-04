@@ -48,6 +48,9 @@
 
         var updateVinylFile = function(vinyl){
 
+            var frontCover = vinyl.images && vinyl.images.frontCover;
+            var backCover = vinyl.images && vinyl.images.backCover;
+
             return Upload.upload({
                 method: 'PUT',
                 url: '/vinyls/files/' + vinyl._id,
@@ -55,8 +58,8 @@
                     Authorization: 'Bearer ' + authentication.getToken()
                 },
                 data:   {
-                    frontCover: vinyl.images.frontCover,
-                    backCover: vinyl.images.backCover
+                    frontCover: frontCover,
+                    backCover: backCover
                 }
             })
 

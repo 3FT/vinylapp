@@ -9,9 +9,10 @@
             .$promise
             .then(function(vinyl){
                 vm.vinyl = vinyl;
-                vm.isOwner = authentication.currentUser() && authentication.currentUser().name == vinyl.addedBy;
+                vm.isOwner = authentication.currentUser() && authentication.currentUser().name === vinyl.addedBy;
                 console.log(vm.vinyl);
             });
+
         vm.deleteVinyl = function(){
             vinylsData.deleteVinyl($routeParams.id)
                 .$promise
@@ -19,7 +20,6 @@
                     $location.path('/vinyls');
                 })
         };
-
 
         vm.updateVinylReview = function(vinyl) {
 

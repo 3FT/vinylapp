@@ -4,29 +4,19 @@
 
     function vinylsEditCtrl(vinylsData, $routeParams, $location) {
         var vm = this;
-        var initialImages = {};
 
-        vinylsData.getVinyl($routeParams.id)
-            .$promise
-            .then(function(res){
-                vm.vinyl = res;
-                Object.assign(initialImages, vm.vinyl.images);
-            });
-
+        vm.vinyl = vinylsData.getVinyl($routeParams.id)
 
         vm.updateVinyl = function(vinyl){
             vinylsData.updateVinyl(vinyl)
                 .$promise
                 .then(function(res){
-                    if (vinyl.images && !angular.equals(initialImages, vinyl.images)){
-                        vinylsData.updateVinylFile(vinyl)
-                            .then(function(res){
-                                $location.path('/vinyls/' + vinyl._id);
-                            })
-                    } else {
-                        $location.path('/vinyls/' + vinyl._id);
-                    }
+                    vinylsData.updateVinylFile(vinyl)
+                        .then(function(res){
+                            $location.path('/vinyls/' + vinyl._id);
+                        });
                 });
+
         };
 
     }

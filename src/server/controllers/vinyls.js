@@ -6,9 +6,7 @@ var multer  = require('multer');
 
 
 var storage = multer.diskStorage({
-/*    destination: function (req, file, cb) {
-        cb(null, './public/uploads/');
-    },*/
+
     destination: './public/uploads/',
     filename: function (req, file, cb) {
         //var fileName = req.body.artist_id + req.body.album + file.fieldname + '-' + Date.now();
