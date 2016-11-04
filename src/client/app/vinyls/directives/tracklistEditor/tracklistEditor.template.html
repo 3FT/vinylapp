@@ -1,14 +1,12 @@
-
 <h3>tracklist</h3>
 <div class="tracklist" ng-hide="isReadOnly">
 
-
     <!-- The dnd-list directive allows to drop elements into it.
          The dropped data will be added to the referenced list -->
 
     <!-- The dnd-list directive allows to drop elements into it.
          The dropped data will be added to the referenced list -->
-    <ul dnd-list="vm.vinyl.tracklist">
+    <ul dnd-list="vm.vinyl.tracklist" ng-show="vm.vinyl.tracklist">
         <!-- The dnd-draggable directive makes an element draggable and will
              transfer the object that was assigned to it. If an element was
              dragged away, you have to remove it from the original list
@@ -23,10 +21,11 @@
             {{item.title}} <span class="glyphicon glyphicon-remove pull-right" style="color:red" ng-click="tvm.removeTrack(item, vm.vinyl)"></span>
         </li>
     </ul>
+
+    <p ng-hide="vm.vinyl.tracklist">No tracks added yet...</p>
+
     <input ng-model="tvm.track.title">
     <input type="submit" class="btn btn-primary" value="add track" ng-click="tvm.addTrack(tvm.track, vm.vinyl)"/>
-
-
 
 </div>
 

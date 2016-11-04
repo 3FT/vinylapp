@@ -28,6 +28,7 @@
                         $location.path('/vinyls');
                     }
                 })
+
         };
 
     }

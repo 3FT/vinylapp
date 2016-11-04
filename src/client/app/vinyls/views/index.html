@@ -2,7 +2,7 @@
     <div class="row">
         <div ng-repeat="vinyl in vm.vinyls" class="col-sm-4">
             <a ng-href="#/vinyls/{{vinyl._id}}">
-                <img ng-src="{{vinyl.images.frontCover || 'images/vinyl-default.gif'}}" style="width: 100%">
+                <img ng-src="{{vinyl.images.frontCover || 'images/vinyl-default.jpg'}}" style="width: 100%">
                 <h2>
                     {{vinyl.artist_id}}
                 </h2>

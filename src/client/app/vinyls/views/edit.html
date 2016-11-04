@@ -1,7 +1,6 @@
 <div class="container">
     <h1>Edit Vinyl</h1>
     <form >
-
         <fieldset class="form-group">
             <label for="description">artist</label>
             <input class="form-control" type="text" id="description" name="description" ng-model="vm.vinyl.artist_id">
@@ -21,16 +20,14 @@
             <label for="cover">cover</label><br>
         </fieldset>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <single-file-drop file="vm.vinyl.images.frontCover" caption="add front"></single-file-drop>
-                </div>
-                <div class="col-sm-6">
-                    <single-file-drop file="vm.vinyl.images.backCover" caption="add back"></single-file-drop>
-                </div>
-
+        <div class="row">
+            <div class="col-sm-6">
+                <single-file-drop file="vm.vinyl.images.frontCover" caption="add front"></single-file-drop>
             </div>
-
+            <div class="col-sm-6">
+                <single-file-drop file="vm.vinyl.images.backCover" caption="add back"></single-file-drop>
+            </div>
+        </div>
     </form>
 
     <tracklist-editor></tracklist-editor>

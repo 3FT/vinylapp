@@ -1,3 +1,6 @@
+/**
+ * Created by levkowalski on 22/10/2016.
+ */
 module.exports = function() {
     var client = './src/client/';
     var clientApp = client + 'app/';
@@ -16,7 +19,9 @@ module.exports = function() {
         build: './build/',
         client: client,
         css: temp + 'css/styles.css',
-        fonts: './bower_components/font-awesome/fonts/**/*.*',
+        fonts: './bower_components/bootstrap/fonts/**/*.*',
+        html: clientApp + '**/*.html',
+        htmltemplates: clientApp + '**/*.html',
         images: client + 'images/**/*.*',
         index: client + 'index.html',
         js: [
@@ -24,10 +29,22 @@ module.exports = function() {
             clientApp + '**/*.js',
             '!' + clientApp + '**/*.spec.js'
         ],
-        sass: client + 'styles/styles.scss',
-        bootstrapDir: './bower_components/bootstrap-sass',
+        sass: client + 'styles/styles.less',
+        less: client + 'styles/styles.less',
         server: server,
         temp: temp,
+
+        /**
+         * template cache
+         */
+        templateCache: {
+            file: 'templates.js',
+            options: {
+                module: 'myApp',
+                standAlone: false,
+                root: 'app'
+            }
+        },
 
         /**
          * Browser sync

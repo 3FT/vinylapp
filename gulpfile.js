@@ -22,26 +22,27 @@ gulp.task('vet', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-/*
 gulp.task('styles', ['clean-styles'], function() {
-
+    log('Compiling LESS --> CSS');
 
     return gulp
-        .src(config.sass)
+        .src(config.less)
         .pipe($.plumber())
-        .pipe($.sass())
-        .pipe(gulp.dest(config.temp));
-});*/
+        .pipe($.less())
+        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+        .pipe(gulp.dest(config.temp + 'css'));
+});
 
-// gulp.task('fonts', ['clean-fonts'], function() {
-//    log('Copying fonts');
-//
-//     return gulp
-//         .src(config.fonts)
-//         .pipe(gulp.dest(config.build + 'fonts'));
-// });
+gulp.task('fonts', function() {
+   log('Copying fonts');
 
-gulp.task('images', ['clean-images'], function() {
+    return gulp
+        .src(config.fonts)
+        .pipe(gulp.dest(config.build + 'fonts'))
+        .pipe(gulp.dest(config.temp + 'fonts'));
+});
+
+gulp.task('images', function() {
    log('Copying and compressing the images');
 
     return gulp
@@ -65,15 +66,35 @@ gulp.task('clean-images', function(done) {
 });
 
 gulp.task('clean-styles', function(done) {
-   clean(config.temp + '/**/*.*', done);
+   clean(config.temp + '/**/*.css', done);
 });
 
-gulp.task('watch:vet', function () {
-    gulp.watch('./**/*.js', ['vet']);
+gulp.task('clean-code', function(done) {
+   var files = [].concat(
+       config.temp + '**/*.js',
+       config.build + '**/*.html',
+       config.build + 'js/**/*.js'
+   );
+    clean(files, done);
 });
 
-gulp.task('sass-watcher', function () {
-    gulp.watch(config.sass, ['styles']);
+
+gulp.task('less-watcher', function () {
+    gulp.watch(config.less, ['styles']);
+});
+
+gulp.task('templatecache', ['clean-code'], function() {
+   log('Creating AngularJS $templateCache');
+
+    return gulp
+        .src(config.htmltemplates)
+        .pipe($.minifyHtml({empty: true}))
+        .pipe($.angularTemplatecache(
+            config.templateCache.file,
+            config.templateCache.options
+            ))
+        .pipe(gulp.dest(config.temp));
+
 });
 
 gulp.task('wiredep', function() {
@@ -88,7 +109,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles'], function() {
+gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
     log('Wire up the app css into the html, and call wiredep');
     return gulp
         .src(config.index)
@@ -96,16 +117,42 @@ gulp.task('inject', ['wiredep', 'styles'], function() {
         .pipe(gulp.dest(config.client));
 });
 
+gulp.task('optimize', ['inject'], function() {
+    log(('Optimizing the javascript, css, html'));
+
+   // var assets = $.useref.assets({searchPath: './'});
+    var templateCache = config.temp + config.templateCache.file;
+
+    return gulp
+        .src(config.index)
+        .pipe($.plumber())
+        .pipe($.inject(gulp.src(templateCache, {read: false}), {
+            starttag: '<!-- inject:templates:js -->'
+        }))
+        .pipe($.useref({searchPath: './'}))
+        .pipe($.if('**/app.js', $.ngAnnotate()))
+        .pipe($.if('**/*.css', $.csso()))
+        .pipe($.if('**/*.js', $.uglify()))
+        .pipe(gulp.dest(config.build));
+
+});
+
+gulp.task('serve-build', ['optimize'], function() {
+    serve(false /* isDev */);
+});
+
 gulp.task('serve-dev', ['inject'], function() {
+    serve(true /* isDev */ );
+});
 
-    var isDev = true;
-
+//////////////////
+function serve(isDev) {
     var nodeOptions = {
         script: config.nodeServer,
         delayTime: 1,
         env: {
             'PORT': port,
-            'NODE_ENV': isDev ? 'dev' : 'buid'
+            'NODE_ENV': isDev ? 'dev' : 'build'
         },
         watch: [config.server]
     };
@@ -117,13 +164,13 @@ gulp.task('serve-dev', ['inject'], function() {
             setTimeout(function() {
                 browserSync.notify('reloading now...');
                 browserSync.reload({stream: false});
-            }, config.browserReloadDelay)
+            }, config.browserReloadDelay);
         })
         .on('start', function() {
             log('*** nodemon started');
             setTimeout(function() {
-                startBrowserSync();
-            }, config.browserReloadDelay)
+                startBrowserSync(isDev);
+            }, config.browserReloadDelay);
         })
         .on('crash', function() {
             log('*** nodemone crashed: script crashed for some reason');
@@ -131,49 +178,35 @@ gulp.task('serve-dev', ['inject'], function() {
         .on('exit', function() {
             log('*** nodemon exited cleanly');
         });
-});
-
-gulp.task('styles', ['fonts'], function() {
-    log('Compiling SASS --> CSS');
-    return gulp
-        .src(config.sass)
-        .pipe($.plumber())
-        .pipe($.sass({
-            includePaths: [config.bootstrapDir + '/assets/stylesheets'],
-        }))
-        .pipe(gulp.dest(config.temp + '/css'));
-});
-
-gulp.task('fonts', function() {
-    log('Copying Bootstrap fonts');
-    return gulp.src(config.bootstrapDir + '/assets/fonts/**/*')
-        .pipe(gulp.dest(config.temp + '/fonts'));
-});
-
-//////////////////
+}
 
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
     log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
 
-function startBrowserSync() {
+function startBrowserSync(isDev) {
     if (browserSync.active) {
        return;
     }
 
     log('Starting browser-sync on port ' + port);
 
-    gulp.watch([config.sass], ['styles'])
-        .on('change', function(event) { changeEvent(event); });
+    if (isDev) {
+        gulp.watch([config.less], ['styles'])
+            .on('change', function(event) { changeEvent(event); });
+    } else {
+        gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
+            .on('change', function(event) { changeEvent(event); });
+    }
 
     var options = {
         proxy: 'localhost:' + port,
         port: 3000,
-        files: [config.client + '**/*.*',
-                '!' + config.sass,
+        files: isDev ? [config.client + '**/*.*',
+                '!' + config.less,
                 config.temp + '**/*.css'
-        ],
+        ] : [],
         ghostMode: {
             clicks: true,
             location: false,

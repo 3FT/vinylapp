@@ -18,7 +18,7 @@
             vinylsData.updateVinyl(vinyl)
                 .$promise
                 .then(function(res){
-                    if (!angular.equals(initialImages, vinyl.images)){
+                    if (vinyl.images && !angular.equals(initialImages, vinyl.images)){
                         vinylsData.updateVinylFile(vinyl)
                             .then(function(res){
                                 $location.path('/vinyls/' + vinyl._id);

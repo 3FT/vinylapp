@@ -6,6 +6,8 @@
     <style>
     </style>
 
+    <!-- build:css css/styles.css-->
+
     <!-- bower:css -->
     <!-- endbower -->
 
@@ -13,6 +15,7 @@
     <link rel="stylesheet" href="/tmp/css/styles.css">
     <!-- endinject -->
 
+    <!-- endbuild -->
 </head>
 <body ng-app="vinylApp">
 
@@ -23,6 +26,8 @@
     <ng-view></ng-view>
 
 
+
+    <!-- build:js js/lib.js-->
 
     <!-- bower:js -->
     <script src="/bower_components/angular/angular.js"></script>
@@ -36,13 +41,17 @@
     <script src="/bower_components/angular-md5/angular-md5.js"></script>
     <!-- endbower -->
 
+    <!-- endbuild -->
+
+    <!-- build:js js/app.js-->
+
     <!-- inject:js -->
     <script src="/src/client/app/app.module.js"></script>
     <script src="/src/client/app/common/modules/gravatar.module.js"></script>
     <script src="/src/client/app/home/home.controller.js"></script>
+    <script src="/src/client/app/profile/profile.controller.js"></script>
     <script src="/src/client/app/users/usersIndex.controller.js"></script>
     <script src="/src/client/app/users/usersShow.controller.js"></script>
-    <script src="/src/client/app/profile/profile.controller.js"></script>
     <script src="/src/client/app/vinyls/vinylsCreate.controller.js"></script>
     <script src="/src/client/app/vinyls/vinylsEdit.controller.js"></script>
     <script src="/src/client/app/vinyls/vinylsIndex.controller.js"></script>
@@ -59,12 +68,17 @@
     <script src="/src/client/app/common/directives/errorHeader/errorHeader.directive.js"></script>
     <script src="/src/client/app/common/directives/navigation/navigation.controller.js"></script>
     <script src="/src/client/app/common/directives/navigation/navigation.directive.js"></script>
-    <script src="/src/client/app/common/directives/singleFileDrop/singleFileDrop.directive.js"></script>
     <script src="/src/client/app/common/directives/reviews/reviews.controller.js"></script>
     <script src="/src/client/app/common/directives/reviews/reviews.directive.js"></script>
+    <script src="/src/client/app/common/directives/singleFileDrop/singleFileDrop.directive.js"></script>
     <script src="/src/client/app/vinyls/directives/tracklistEditor/tracklistEditor.controller.js"></script>
     <script src="/src/client/app/vinyls/directives/tracklistEditor/tracklistEditor.directive.js"></script>
     <!-- endinject -->
 
+
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+
+    <!-- endbuild -->
 </body>
 </html>

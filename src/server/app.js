@@ -47,6 +47,9 @@ app.get('/ping', function(req, res, next) {
     res.send('pong');
 });
 
+// common directory for uploads
+app.use(express.static('./public/'));
+
 switch (environment) {
     case 'build':
         console.log('** BUILD **');
