@@ -6,9 +6,9 @@
          var vm = this;
 
          vm.credentials = {
-             name: "",
-             email: "",
-             password: ""
+             name: '',
+             email: '',
+             password: ''
          };
 
          vm.onSubmit = function () {

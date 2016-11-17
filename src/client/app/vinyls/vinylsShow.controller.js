@@ -10,7 +10,6 @@
             .then(function(vinyl){
                 vm.vinyl = vinyl;
                 vm.isOwner = authentication.currentUser() && authentication.currentUser().name === vinyl.addedBy;
-                console.log(vm.vinyl);
             });
 
         vm.deleteVinyl = function(){
@@ -18,7 +17,7 @@
                 .$promise
                 .then(function(res){
                     $location.path('/vinyls');
-                })
+                });
         };
 
         vm.updateVinylReview = function(vinyl) {

@@ -8,7 +8,7 @@
 
         tvm.addTrack = function(track, vinyl){
 
-           if (!vinyl.tracklist) {vinyl.tracklist = []}
+           if (!vinyl.tracklist) {vinyl.tracklist = [];}
            vinyl.tracklist.push({ title : track.title, length: track.length});
 
         };

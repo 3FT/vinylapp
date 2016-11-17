@@ -11,13 +11,13 @@
             var timeInSeconds = time / 1000;
 
             if (timeInSeconds < 60) {
-                return Math.floor(timeInSeconds) + " seconds ago";
+                return Math.floor(timeInSeconds) + ' seconds ago';
             } else if (timeInSeconds < (60*60)) {
-                    return Math.floor(timeInSeconds / 60) + " minutes ago";
+                    return Math.floor(timeInSeconds / 60) + ' minutes ago';
             } else if (timeInSeconds < (60*60*60)) {
-                    return Math.floor(timeInSeconds / (60*60)) + " hours ago";
+                    return Math.floor(timeInSeconds / (60*60)) + ' hours ago';
             } else if (timeInSeconds < (60*60*60*24)) {
-                    return Math.floor(timeInSeconds / (60*60*60)) + " days ago";
+                    return Math.floor(timeInSeconds / (60*60*60)) + ' days ago';
             }
         };
 

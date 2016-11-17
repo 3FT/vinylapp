@@ -9,7 +9,7 @@
                 controller: 'tracklistCtrl as tvm',
                 link: function(scope, element, attrs, ctrl) {
 
-                    scope.isReadOnly = attrs.isReadOnly  == 'true';
+                    scope.isReadOnly = attrs.isReadOnly  === 'true';
 
                }
           };

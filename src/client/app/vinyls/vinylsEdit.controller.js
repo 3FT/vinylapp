@@ -5,7 +5,7 @@
     function vinylsEditCtrl(vinylsData, $routeParams, $location) {
         var vm = this;
 
-        vm.vinyl = vinylsData.getVinyl($routeParams.id)
+        vm.vinyl = vinylsData.getVinyl($routeParams.id);
 
         vm.updateVinyl = function(vinyl){
             vinylsData.updateVinyl(vinyl)

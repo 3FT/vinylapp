@@ -10,7 +10,7 @@ module.exports.register = function(req, res, next) {
      if(!req.body.name || !req.body.email || !req.body.password) {
 
          res.status(400).json({
-             "message": "All fields required"
+             'message': 'All fields required'
          });
         return;
 
@@ -30,7 +30,7 @@ module.exports.register = function(req, res, next) {
 
             if (err.code === duplicateEmailErrCode) {
                 err.status = 400;
-                err.message = "User or email already exist...";
+                err.message = 'User or email already exist...';
             }
 
             return next(err);
@@ -40,7 +40,7 @@ module.exports.register = function(req, res, next) {
         token = user.generateJwt();
         res.status(200);
         res.json({
-            "token" : token
+            'token' : token
         });
     });
 
@@ -53,13 +53,13 @@ module.exports.login = function(req, res) {
      if(!req.body.email || !req.body.password) {
 
          res.status(400).json({
-             "message": "All fields required"
+             'message': 'All fields required'
          });
          return;
 
      }
 
-    passport.authenticate('local', function(err, user, info){
+    passport.authenticate('local', function(err, user, info, next){
         var token;
 
         // If Passport throws/catches an error
@@ -72,7 +72,7 @@ module.exports.login = function(req, res) {
         if(user){
             token = user.generateJwt();
             res.status(200);
-            res.json({"token" : token});
+            res.json({'token' : token});
         } else {
             // If user is not found
             res.status(401).json(info);

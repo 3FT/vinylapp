@@ -4,12 +4,12 @@
 
          return {
              replace: true,
-             restrict: "E",
+             restrict: 'E',
              templateUrl: '/app/common/directives/errorHeader/errorHeader.template.html',
              scope: {
-                 message : "="
+                 message : '='
              }
-         }
+         };
 
      });
 

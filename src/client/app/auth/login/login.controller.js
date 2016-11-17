@@ -6,8 +6,8 @@
          var vm = this;
 
          vm.credentials = {
-             email : "",
-             password : ""
+             email : '',
+             password : ''
          };
 
 

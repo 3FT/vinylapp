@@ -16,7 +16,7 @@
         }, 1000);
 
         $scope.$on('$destroy', function () {
-            $interval.cancel(interval)
+            $interval.cancel(interval);
         });
     }
 

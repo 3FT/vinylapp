@@ -4,14 +4,14 @@
 
          return {
              replace: true,
-             restrict: "E",
+             restrict: 'E',
              templateUrl: '/app/common/directives/singleFileDrop/singleFileDrop.template.html',
              scope: {
-                 file : "=",
-                 caption: "@"
+                 file : '=',
+                 caption: '@'
              }
 
-         }
+         };
 
      });
 

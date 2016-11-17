@@ -1,7 +1,7 @@
 (function () {
 
      angular.module('ngGravatar', ['angular-md5']);
-     angular.module('ngGravatar').directive("gravatar", function(Gravatar){
+     angular.module('ngGravatar').directive('gravatar', function(Gravatar){
          return {
              replace: true,
              restrict: 'E',
@@ -10,12 +10,12 @@
              controller: function($scope){
                  $scope.gravatarUrl = Gravatar($scope.email);
              }
-         }
+         };
      });
 
      angular.module('ngGravatar').provider('Gravatar', function(){
          var imageSize = 200;
-         var url = "http://www.gravatar.com/avatar/";
+         var url = 'http://www.gravatar.com/avatar/';
 
          // configuration
          this.setSize = function(value) {
@@ -25,10 +25,8 @@
          // returns service
          this.$get = function(md5) {
              return function(email) {
-                 //return url + CryptoJS.MD5(email) + "?size=" + imageSize.toString();
-                 return url + md5.createHash(email) + "?size=" + imageSize.toString();
-                 //return url + CryptoJS.MD5(email);
-             }
+                 return url + md5.createHash(email) + '?size=' + imageSize.toString();
+             };
          };
      });
 

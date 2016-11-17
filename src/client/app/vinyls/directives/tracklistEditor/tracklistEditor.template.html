@@ -22,8 +22,6 @@
         </li>
     </ul>
 
-    <p ng-hide="vm.vinyl.tracklist">No tracks added yet...</p>
-
     <input ng-model="tvm.track.title">
     <input type="submit" class="btn btn-primary" value="add track" ng-click="tvm.addTrack(tvm.track, vm.vinyl)"/>
 
@@ -36,3 +34,6 @@
     </li>
 
 </ul>
+
+
+<p ng-show="vm.vinyl.tracklist.length === 0">No tracks added yet...</p>

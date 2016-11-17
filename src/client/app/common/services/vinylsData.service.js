@@ -9,7 +9,7 @@
 
         // Pass session token as Authorization header
         var headers = {
-             'Authorization': function(){ return 'Bearer ' + authentication.getToken() }
+             'Authorization': function(){ return 'Bearer ' + authentication.getToken(); }
         };
 
         // Assemble actions with custom headers attached
@@ -61,7 +61,7 @@
                     frontCover: frontCover,
                     backCover: backCover
                 }
-            })
+            });
 
         };
 
