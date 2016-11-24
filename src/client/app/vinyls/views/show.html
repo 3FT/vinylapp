@@ -8,13 +8,6 @@
         </div>
     </div>
 
-    <div ng-show="vm.isOwner">
-        <a href="#/vinyls/{{vm.vinyl._id}}/edit/">
-            <button type="button" class="btn btn-warning pull-right">Edit</button>
-        </a>
-        <button type="button" class="btn btn-danger pull-right" ng-click="vm.deleteVinyl(vm.vinyl)">Delete</button>
-    </div>
-
     <h2>
         artist
     </h2>
@@ -31,6 +24,14 @@
     <tracklist-editor is-read-only="true"></tracklist-editor>
 
     <reviews product="vm.vinyl" update-method="vm.updateVinylReview"></reviews>
+
+    <div ng-show="vm.isOwner">
+        <a href="#/vinyls/{{vm.vinyl._id}}/edit/">
+            <button type="button" class="btn btn-warning pull-right">Edit</button>
+        </a>
+        <button type="button" class="btn btn-danger pull-right" ng-click="vm.deleteVinyl(vm.vinyl)">Delete</button>
+    </div>
+
 </div>
 
 

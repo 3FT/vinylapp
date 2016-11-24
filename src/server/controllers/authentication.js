@@ -43,7 +43,6 @@ module.exports.register = function(req, res, next) {
             'token' : token
         });
     });
-
 };
 
 
@@ -56,7 +55,6 @@ module.exports.login = function(req, res) {
              'message': 'All fields required'
          });
          return;
-
      }
 
     passport.authenticate('local', function(err, user, info, next){
@@ -78,7 +76,6 @@ module.exports.login = function(req, res) {
             res.status(401).json(info);
         }
     })(req, res);
-
 };
 
 

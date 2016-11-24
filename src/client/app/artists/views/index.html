@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div ng-repeat="artist in vm.artists" class="col-sm-4">
+            <a ng-href="#/artists/{{artist._id}}">
+                <h2>
+                    {{artist._id}}
+                </h2>
+            </a>
+                <span class="label label-info">
+                    {{artist.style}}
+                </span>
+                <p>added by: {{artist.addedBy}}</p>
+                <p>{{vm.getTime(artist.dateAdded)}}</p>
+        </div>
+    </div>
+</div>
+
+

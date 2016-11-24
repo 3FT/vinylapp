@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>
+        artist
+    </h2>
+    <p>{{vm.artist._id}}</p>
+    <h3>
+        style
+    </h3>
+    <p>{{vm.artist.style}}</p>
+
+    <div ng-show="vm.isOwner">
+        <a href="#/artists/{{vm.artist._id}}/edit/">
+            <button type="button" class="btn btn-warning pull-right">Edit</button>
+        </a>
+        <button type="button" class="btn btn-danger pull-right" ng-click="vm.deleteArtist(vm.artist)">Delete</button>
+    </div>
+</div>
+
+
+
+
+

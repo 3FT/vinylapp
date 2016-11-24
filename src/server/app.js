@@ -12,6 +12,7 @@ var routesAuth = require('./routes/auth');
 var routesProfile = require('./routes/profile');
 var routesVinyls = require('./routes/vinyls');
 var routesUsers = require('./routes/users');
+var routesArtists = require('./routes/artists');
 
 
 var port = process.env.PORT || 7203;
@@ -30,6 +31,7 @@ app.use('/vinyls', routesVinyls);
 app.use('/auth', routesAuth);
 app.use('/profile', routesProfile);
 app.use('/users', routesUsers);
+app.use('/artists', routesArtists);
 
 // Error handler
 app.use(function(err, req, res, next) {
