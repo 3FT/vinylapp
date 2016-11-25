@@ -2,8 +2,10 @@
 
     angular.module('vinylApp').controller('vinylsCreateCtrl', vinylsCtrl);
 
-    function vinylsCtrl (vinylsData, $location) {
+    function vinylsCtrl (vinylsData, artistsData, $location) {
         var vm = this;
+
+        vm.artists = artistsData.getAllArtists();
 
         vm.createVinyl = function(vinyl) {
 
@@ -16,7 +18,6 @@
                             $location.path('/vinyls');
                         });
                 });
-
         };
 
     }

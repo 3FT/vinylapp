@@ -2,10 +2,12 @@
 
     angular.module('vinylApp').controller('vinylsEditCtrl', vinylsEditCtrl);
 
-    function vinylsEditCtrl(vinylsData, $routeParams, $location) {
+    function vinylsEditCtrl(vinylsData, artistsData, $routeParams, $location) {
         var vm = this;
 
         vm.vinyl = vinylsData.getVinyl($routeParams.id);
+
+        vm.artists = artistsData.getAllArtists();
 
         vm.updateVinyl = function(vinyl){
             vinylsData.updateVinyl(vinyl)
