@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular.module('vinylApp').controller('vinylsShowCtrl', vinylsShowCtrl);
 
@@ -20,12 +20,21 @@
                 });
         };
 
+        function updateVinylRating(vinyl) {
+            var sum = 0;
+
+            for (var i = 0; i < vinyl.reviews.length; i++) {
+                sum += vinyl.reviews[i].stars;
+            }
+
+            var avg = sum / vinyl.reviews.length;
+            vinyl.averageRating = avg;
+        }
+
         vm.updateVinylReview = function(vinyl) {
-
+            updateVinylRating(vinyl);
             vinylsData.updateVinylReview(vinyl);
-
         };
-
     }
 
 }());

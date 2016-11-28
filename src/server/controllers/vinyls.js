@@ -83,45 +83,37 @@ module.exports.updateVinyl = function(req, res, next) {
 };
 
 module.exports.updateVinylFile = function(req, res, next) {
-
     Vinyl.findById(req.params.id, function (err, vinyl) {
-
         vinyl.images.frontCover = req.body.frontCover;
         vinyl.images.backCover = req.body.backCover;
 
         if (err) {
             return next(err);
         }
-        vinyl.save(function (err, updatedVinyl) {
 
+        vinyl.save(function (err, updatedVinyl) {
             if (err) {
                 return next(err);
             }
             res.status(200).json({message: 'updated vinyl file'});
         });
     });
-
 };
 
 module.exports.deleteVinyl = function(req, res, next) {
-
      Vinyl.findById(req.params.id, function (err, vinyl) {
 
          vinyl.remove(function (err) {
-
              if (err) {
                  return next(err);
              }
              res.status(200).json({message: 'deleted vinyl'});
          });
      });
-
 };
 
 module.exports.checkOwnership = function(req, res, next) {
-
     Vinyl.findById(req.params.id, function (err, vinyl) {
-
         if (err) { return next(err);}
 
         // check Vinyl owner
@@ -129,7 +121,6 @@ module.exports.checkOwnership = function(req, res, next) {
             res.status(403).json({message: 'unauthorized'});
             return;
         }
-
     });
 
     next();
@@ -137,14 +128,28 @@ module.exports.checkOwnership = function(req, res, next) {
 
 
 module.exports.vinylJsonFilter = function(req, res, next) {
-
     var filter = {
         album: req.body.album,
         artist_id: req.body.artist_id,
         tracklist: req.body.tracklist,
         year: req.body.year
     };
+
     req.body = filter;
     next();
 };
 
+module.exports.updateAverageRating = function(req, res, next) {
+    var sum = 0;
+
+    var reviews = req.body.reviews;
+
+    for (var i = 0; i < reviews.length; i++) {
+        sum += reviews[i].stars;
+    }
+
+    var avg = sum / reviews.length;
+    req.body.averageRating = avg;
+
+    next();
+};

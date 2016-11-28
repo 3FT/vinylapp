@@ -10,7 +10,8 @@
                     {{vinyl.album}}
                 </h3>
             </a>
-                <p>added by: {{vinyl.addedBy}}</p>
+            <star-rating ng-model="vinyl.averageRating" is-read-only="true"></star-rating>
+                <p>added by {{vinyl.addedBy}}</p>
                 <p>{{vm.getTime(vinyl.dateAdded)}}</p>
         </div>
     </div>

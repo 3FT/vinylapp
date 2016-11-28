@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular.module('vinylApp').controller('artistsShowCtrl', artistsShowCtrl);
 
@@ -13,7 +13,6 @@
             });
 
         vm.deleteArtist = function(){
-            debugger;
             console.log($routeParams.id);
             artistsData.deleteArtist($routeParams.id)
                 .$promise

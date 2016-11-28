@@ -3,29 +3,6 @@
 
 
 
-.star-rating {
-
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-}
-
-
-.star {
-  padding: 1px;
-  color: #ddd;
-  font-size: 20px;
-  text-shadow: .05em .05em #aaa;
-  list-style-type: none;
-  display: inline-block;
-  cursor: pointer;
-
-}
-
-.star.filled {
-  color: #fd0;
-}
-
 
 
 /**
@@ -104,4 +81,45 @@
 
 ul {
   list-style-type: none;
+}
+
+
+
+// Method 1) PureCSS
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 125px;
+  margin: 10px 0;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+
+  &-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  &-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+    cursor: pointer;
+  }
+}
+
+.glyphicon-star {
+  display: inline;
+}
+
+.no-pointer {
+  pointer-events: none;
 }

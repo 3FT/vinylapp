@@ -5,6 +5,7 @@
 <ul>
     <li ng-repeat="review in product.reviews">
         <blockquote>
+            <star-rating ng-model="review.stars" is-read-only="true"></star-rating>
             <strong><p>{{review.stars}} Stars</p></strong>
             {{review.body}}
             <cite class="clearfix">—{{review.author}} on {{review.createdOn | date}}</cite>
@@ -16,6 +17,7 @@
 <form name="reviewForm" ng-submit="reviewForm.$valid && rvm.addReview(product); updateMethod(product)" novalidate ng-show="rvm.isLoggedIn">
     <!--  Live Preview -->
     <blockquote ng-show="rvm.review">
+        <star-rating ng-model="rvm.review.stars" is-read-only="true"></star-rating>
         <strong>{{rvm.review.stars}} Stars</strong>
         {{rvm.review.body}}
         <cite class="clearfix">—{{rvm.review.author}}</cite>
@@ -24,9 +26,7 @@
     <!--  Review Form -->
     <h4>Submit a Review</h4>
     <fieldset class="form-group">
-        <select ng-model="rvm.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
-            <option value>Rate the Product</option>
-        </select>
+        <star-rating ng-model="rvm.review.stars"></star-rating>
     </fieldset>
     <fieldset class="form-group">
         <textarea ng-model="rvm.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>

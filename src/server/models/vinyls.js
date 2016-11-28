@@ -32,7 +32,10 @@ var vinylSchema = new mongoose.Schema({
         body: String,
         author: String,
         createdOn: Number
-    }]
+    }],
+    averageRating: {
+        type: Number
+    }
 });
 
 
