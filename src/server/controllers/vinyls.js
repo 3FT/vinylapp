@@ -50,9 +50,9 @@ module.exports.getVinyl = function(req, res, next) {
 module.exports.createVinyl = function(req, res, next) {
     
     var vinyl = new Vinyl();
-
+    /* jshint ignore:start */
     for (var attrname in req.body) { vinyl[attrname] = req.body[attrname];}
-
+    /* jshint ignore:end */
     vinyl.addedBy = req.payload.name;
     vinyl.dateAdded = Date.now();
     vinyl.save(function(err, vinyl) {
@@ -70,9 +70,9 @@ module.exports.createVinyl = function(req, res, next) {
 module.exports.updateVinyl = function(req, res, next) {
 
     Vinyl.findById(req.params.id, function (err, vinyl) {
-
+        /* jshint ignore:start */
         for (var attrname in req.body) { vinyl[attrname] = req.body[attrname];}
-
+        /* jshint ignore:end */
         vinyl.save(function (err, updatedVinyl) {
 
             if (err) {return next(err);}
@@ -130,7 +130,9 @@ module.exports.checkOwnership = function(req, res, next) {
 module.exports.vinylJsonFilter = function(req, res, next) {
     var filter = {
         album: req.body.album,
+        /*jshint -W106 */
         artist_id: req.body.artist_id,
+        /*jshint +W106 */
         tracklist: req.body.tracklist,
         year: req.body.year
     };

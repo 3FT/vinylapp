@@ -17,9 +17,9 @@ module.exports.getArtist = function(req, res, next) {
 
 module.exports.createArtist = function(req, res, next) {
     var artist = new Artist();
-
+    /* jshint ignore:start */
     for (var attrname in req.body) { artist[attrname] = req.body[attrname];}
-
+    /* jshint ignore:end */
     artist.addedBy = req.payload.name;
     artist.dateAdded = Date.now();
     artist.save(function(err, artist) {
@@ -46,8 +46,9 @@ module.exports.deleteArtist = function(req, res, next) {
 module.exports.updateArtist = function(req, res, next) {
     Artist.findById(req.params.id, function (err, artist) {
         if (!artist) {return next(new Error(req.params.id + ' doesn\'t exist'));}
+        /* jshint ignore:start */
         for (var attrname in req.body) {artist[attrname] = req.body[attrname];}
-
+        /* jshint ignore:end */
         artist.save(function (err, updatedArtist) {
 
             if (err) {return next(err);}

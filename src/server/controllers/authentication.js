@@ -2,7 +2,7 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-const duplicateEmailErrCode = 11000;
+var duplicateEmailErrCode = 11000;
 
 module.exports.register = function(req, res, next) {
 

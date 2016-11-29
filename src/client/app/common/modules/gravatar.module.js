@@ -5,10 +5,12 @@
          return {
              replace: true,
              restrict: 'E',
-             template: "<img ng-src='{{gravatarUrl}}'>",
+             template: '<img ng-src={{gravatarUrl}}>',
              scope: {email: '='},
              controller: function($scope){
+                 /*jshint -W064 */
                  $scope.gravatarUrl = Gravatar($scope.email);
+                 /*jshint +W064 */
              }
          };
      });

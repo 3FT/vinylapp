@@ -6,7 +6,9 @@ var vinylSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    /*jshint -W106 */
     artist_id: {
+    /*jshint +W106 */
         type: String,
         required: true
     },

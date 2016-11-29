@@ -9,9 +9,7 @@
 
         tvm.addTrack = function(track, vinyl){
            if (!vinyl.tracklist) {vinyl.tracklist = [];}
-           // vinyl.tracklist.push({ title : track.title, length: track.length});
             vinyl.tracklist.push(track);
-            console.log("added ", track , " inside " , vinyl);
             initTrack();
         };
 
