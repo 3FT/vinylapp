@@ -1,4 +1,4 @@
-<div class="star-ratings-css">
+<div ng-hide="!ratingValue && isReadOnly" class="star-ratings-css">
     <div class="star-ratings-css-top" style="width: {{percentage}}">
         <span ng-repeat="star in getNumber(max) track by $index" ng-click="toggle($index)" class="glyphicon glyphicon-star"></span>
     </div>
@@ -6,3 +6,4 @@
         <span ng-repeat="star in getNumber(max) track by $index" ng-click="toggle($index)" class="glyphicon glyphicon-star"></span>
     </div>
 </div>
+<p ng-show="!ratingValue && isReadOnly">No ratings added yet</p>

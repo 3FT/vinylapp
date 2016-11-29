@@ -19,8 +19,10 @@
         };
 
         function initTrack() {
-            tvm.track = {title:'', duration: {}};
+            tvm.track = {
+                        title:'',
+                        duration: {minutes: '0', seconds: '00'}
+                        };
         }
     }
-
 }());

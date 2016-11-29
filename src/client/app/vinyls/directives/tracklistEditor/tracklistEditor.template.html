@@ -19,33 +19,27 @@
             dnd-selected="models.selected = item"
             ng-class="{'selected': models.selected === item}"
         >
-            {{$index + 1}}
-            {{item.title}}
-            <span class="glyphicon glyphicon-remove pull-right red-cross" style="color:red" ng-click="tvm.removeTrack(item, vm.vinyl)"></span>
+            <span>{{$index + 1}}</span>
+            <span>{{item.title}}</span>
+            <span class="glyphicon glyphicon-remove pull-right red-cross" ng-click="tvm.removeTrack(item, vm.vinyl)"></span>
             <span class="pull-right">{{item.duration.minutes}}:{{item.duration.seconds | twoDigits}}</span>
-
         </li>
     </ul>
-
     <fieldset class="form-group">
         <label for="title">track title</label>
         <input class="form-control" type="text" id="title" name="title" ng-model="tvm.track.title">
     </fieldset>
-
     <fieldset class="form-group">
         <label for="title">track duration</label>
         <div class="duration_input">
             <input ng-model="tvm.track.duration.minutes" type="number" class="minutes" placeholder="00" min="0" max="60" step="1">
             <span class="duration-sep">:</span>
-            <input ng-model="tvm.track.duration.seconds" type="number" class="seconds" placeholder="00" min="5" max="59" step="1">
+            <input ng-model="tvm.track.duration.seconds" type="number" class="seconds" placeholder="00" min="0" max="59" step="1">
         </div>
-
     </fieldset>
         {{tvm.track.length}}
     <input type="submit" class="btn btn-primary" value="add track" ng-click="tvm.addTrack(tvm.track, vm.vinyl)"/>
-
 </div>
-
 <ul class="list-group" ng-show="isReadOnly" >
     <li class="list-group-item" ng-repeat="track in vm.vinyl.tracklist">
         {{$index + 1}}

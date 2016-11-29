@@ -1,6 +1,6 @@
-(function () {
+(function() {
 
-    angular.module('vinylApp').controller('vinylsCreateCtrl', vinylsCtrl);
+    angular.module('vinylApp').controller('vinylsCreateCtrl', ['vinylsData', 'artistsData', '$location', vinylsCtrl]);
 
     function vinylsCtrl (vinylsData, artistsData, $location) {
         var vm = this;
@@ -20,9 +20,7 @@
                         });
                 });
         };
-
     }
-
 }());
 
 

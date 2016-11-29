@@ -3,10 +3,9 @@
     <form>
         <fieldset class="form-group">
             <label for="description">artist</label><br>
-            <select ng-options="artist._id for artist in vm.artists" ng-model="vm.vinyl.artist_id"></select>
+            <select class="form-control" ng-options="artist._id for artist in vm.artists" ng-model="vm.vinyl.artist_id"></select>
             <!--<input class="form-control" type="text" id="description" name="description" ng-model="vm.vinyl.artist_id">-->
         </fieldset>
-
         <fieldset class="form-group">
             <label for="title">album</label>
             <input class="form-control" type="text" id="title" name="title" ng-model="vm.vinyl.album">
@@ -30,9 +29,7 @@
             </div>
         </div>
     </form>
-
     <tracklist-editor></tracklist-editor>
-
     <button type="button" class="btn btn-success pull-right" ng-click="vm.createVinyl(vm.vinyl)">Save</button>
 </div>
 

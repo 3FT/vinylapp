@@ -6,7 +6,5 @@
         return function(input, optional1, optional2) {
             return ('0' + input).slice(-2);
         };
-
     });
-
 }());

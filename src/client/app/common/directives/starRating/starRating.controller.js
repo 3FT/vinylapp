@@ -1,9 +1,8 @@
 (function() {
 
-    angular.module('vinylApp').controller('StarRatingCtrl', StarRatingCtrl);
+    angular.module('vinylApp').controller('StarRatingCtrl', ['$scope', StarRatingCtrl]);
 
     function StarRatingCtrl($scope) {
-
         $scope.max = 5;
         $scope.getNumber = function(num) {
             return new Array(num);
@@ -24,7 +23,5 @@
             var width = (ratingValue / maxValue) || 0;
             return width * 100 + '%';
         }
-
     }
-
 }());

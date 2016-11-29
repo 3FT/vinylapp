@@ -1,6 +1,6 @@
 (function() {
 
-    angular.module('vinylApp').controller('DashboardCtrl', DashboardCtrl);
+    angular.module('vinylApp').controller('DashboardCtrl', ['vinylsData', 'artistsData', 'authentication', DashboardCtrl]);
 
     function DashboardCtrl(vinylsData, artistsData, authentication) {
         var dbdvm= this;
@@ -19,17 +19,6 @@
                 dbdvm.myArtistCount = getItemsCount(artists, authentication.currentUser().name);
             });
 
-
-        /*
-                dbdvm.selectedStudentsCount = function() {
-                    var count = 0;
-                    angular.forEach($scope.students, function(student){
-                        count += student.isSelected ? 1 : 0;
-                    });
-                    return count;
-                };
-        */
-
         function getItemsCount(things, owner) {
             var count = 0;
             angular.forEach(things, function(thing){
@@ -37,7 +26,5 @@
             });
             return count;
         }
-
     }
-
 })();
