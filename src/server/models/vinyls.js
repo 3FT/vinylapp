@@ -23,9 +23,12 @@ var vinylSchema = new mongoose.Schema({
     dateAdded: {
         type: Number
     },
-    tracklist : [{
-        title : String,
-        length : Number
+    tracklist: [{
+        title: String,
+        duration: {
+            minutes: Number,
+            seconds: Number
+        }
     }],
     reviews : [{
         stars: Number,
@@ -37,6 +40,5 @@ var vinylSchema = new mongoose.Schema({
         type: Number
     }
 });
-
 
 mongoose.model('Vinyl', vinylSchema);

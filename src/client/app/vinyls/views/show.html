@@ -7,11 +7,10 @@
             <img  ng-src="{{vm.vinyl.images.backCover || 'images/vinyl-default.jpg'}}" style="width: 100%">
         </div>
     </div>
-
     <h2>
         artist
     </h2>
-    <p>{{vm.vinyl.artist_id}}</p>
+    <a ng-href="#/artists/{{vm.vinyl.artist_id}}">{{vm.vinyl.artist_id}}</a>
     <h3>
         album
     </h3>

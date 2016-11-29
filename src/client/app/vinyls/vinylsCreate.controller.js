@@ -5,6 +5,7 @@
     function vinylsCtrl (vinylsData, artistsData, $location) {
         var vm = this;
 
+        vm.vinyl = {};
         vm.artists = artistsData.getAllArtists();
 
         vm.createVinyl = function(vinyl) {

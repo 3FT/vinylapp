@@ -1,4 +1,5 @@
 <h3>tracklist</h3>
+<p ng-hide="vm.vinyl.tracklist.length">No tracks added yet...</p>
 <div class="tracklist" ng-hide="isReadOnly">
 
     <!-- The dnd-list directive allows to drop elements into it.
@@ -18,22 +19,38 @@
             dnd-selected="models.selected = item"
             ng-class="{'selected': models.selected === item}"
         >
-            {{item.title}} <span class="glyphicon glyphicon-remove pull-right" style="color:red" ng-click="tvm.removeTrack(item, vm.vinyl)"></span>
+            {{$index + 1}}
+            {{item.title}}
+            <span class="glyphicon glyphicon-remove pull-right red-cross" style="color:red" ng-click="tvm.removeTrack(item, vm.vinyl)"></span>
+            <span class="pull-right">{{item.duration.minutes}}:{{item.duration.seconds | twoDigits}}</span>
+
         </li>
     </ul>
 
-    <input ng-model="tvm.track.title">
+    <fieldset class="form-group">
+        <label for="title">track title</label>
+        <input class="form-control" type="text" id="title" name="title" ng-model="tvm.track.title">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="title">track duration</label>
+        <div class="duration_input">
+            <input ng-model="tvm.track.duration.minutes" type="number" class="minutes" placeholder="00" min="0" max="60" step="1">
+            <span class="duration-sep">:</span>
+            <input ng-model="tvm.track.duration.seconds" type="number" class="seconds" placeholder="00" min="5" max="59" step="1">
+        </div>
+
+    </fieldset>
+        {{tvm.track.length}}
     <input type="submit" class="btn btn-primary" value="add track" ng-click="tvm.addTrack(tvm.track, vm.vinyl)"/>
 
 </div>
 
-
 <ul class="list-group" ng-show="isReadOnly" >
     <li class="list-group-item" ng-repeat="track in vm.vinyl.tracklist">
+        {{$index + 1}}
         {{track.title}}
+        <span class="pull-right">{{track.duration.minutes}}:{{track.duration.seconds | twoDigits}}</span>
     </li>
-
 </ul>
 
-
-<p ng-show="vm.vinyl.tracklist.length === 0">No tracks added yet...</p>
