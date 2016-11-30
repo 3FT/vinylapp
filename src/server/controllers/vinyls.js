@@ -53,16 +53,14 @@ module.exports.createVinyl = function(req, res, next) {
     /* jshint ignore:start */
     for (var attrname in req.body) { vinyl[attrname] = req.body[attrname];}
     /* jshint ignore:end */
-    vinyl.addedBy = req.payload.name;
+    vinyl.addedBy = req.payload._id;
     vinyl.dateAdded = Date.now();
     vinyl.save(function(err, vinyl) {
-
         if (err) {
             return next(err);
         }
         // respond with ID
         res.status(201).json({_id: vinyl.id});
-
     });
 
 };

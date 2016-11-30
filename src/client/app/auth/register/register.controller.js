@@ -6,7 +6,7 @@
          var vm = this;
 
          vm.credentials = {
-             name: '',
+             _id: '',
              email: '',
              password: ''
          };
@@ -20,9 +20,6 @@
                  .catch(function (err) {
                      vm.errMessage = err.data.message;
                  });
-
          };
-
      }
-
 }());

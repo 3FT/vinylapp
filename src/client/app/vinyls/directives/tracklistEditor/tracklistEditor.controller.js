@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular.module('vinylApp').controller('tracklistCtrl', tracklistCtrl);
 
@@ -21,7 +21,7 @@
         function initTrack() {
             tvm.track = {
                         title:'',
-                        duration: {minutes: '0', seconds: '00'}
+                        duration: {minutes: '', seconds: ''}
                         };
         }
     }

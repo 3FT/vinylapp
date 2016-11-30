@@ -13,7 +13,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li ng-hide="navvm.isLoggedIn()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
-            <li ng-show="navvm.isLoggedIn()"><a href="#/profile"><span class="glyphicon glyphicon-user"></span> {{ navvm.currentUser().name }}</a></li>
+            <li ng-show="navvm.isLoggedIn()"><a href="#/users/{{navvm.currentUser()._id}}"><span class="glyphicon glyphicon-user"></span> {{navvm.currentUser()._id}}</a></li>
             <li ng-show="navvm.isLoggedIn()"><a href="" ng-click="navvm.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>

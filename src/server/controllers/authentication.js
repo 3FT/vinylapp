@@ -7,7 +7,7 @@ var duplicateEmailErrCode = 11000;
 module.exports.register = function(req, res, next) {
 
      // Check fields
-     if(!req.body.name || !req.body.email || !req.body.password) {
+     if(!req.body._id || !req.body.email || !req.body.password) {
 
          res.status(400).json({
              'message': 'All fields required'
@@ -18,7 +18,7 @@ module.exports.register = function(req, res, next) {
 
     var user = new User();
 
-    user.name = req.body.name;
+    user._id = req.body._id;
     user.email = req.body.email;
     user.dateJoined = Date.now();
     user.setPassword(req.body.password);

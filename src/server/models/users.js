@@ -3,13 +3,10 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
+    _id: String,
     email: {
         type: String,
         unique: true,
-        required: true
-    },
-    name: {
-        type: String,
         required: true
     },
     dateJoined: {
@@ -36,7 +33,7 @@ userSchema.methods.generateJwt = function() {
     return jwt.sign({
         _id: this._id,
         email: this.email,
-        name: this.name,
+      //  name: this.name,
         exp: parseInt(expiry.getTime() / 1000),
     }, 'MY_SECRET'); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };

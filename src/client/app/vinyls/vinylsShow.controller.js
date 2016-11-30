@@ -9,7 +9,7 @@
             .$promise
             .then(function(vinyl){
                 vm.vinyl = vinyl;
-                vm.isOwner = authentication.currentUser() && authentication.currentUser().name === vinyl.addedBy;
+                vm.isOwner = authentication.currentUser() && authentication.currentUser()._id === vinyl.addedBy;
             });
 
         vm.deleteVinyl = function(){
@@ -36,7 +36,6 @@
             vinylsData.updateVinylReview(vinyl);
         };
     }
-
 }());
 
 

@@ -9,7 +9,7 @@
             .$promise
             .then(function(artist){
                 vm.artist = artist;
-                vm.isOwner = authentication.currentUser() && authentication.currentUser().name === artist.addedBy;
+                vm.isOwner = authentication.currentUser() && authentication.currentUser()._id === artist.addedBy;
             });
 
         vm.deleteArtist = function(){

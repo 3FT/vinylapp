@@ -9,7 +9,7 @@
         rvm.isLoggedIn = authentication.isLoggedIn();
 
         rvm.addReview = function(product){
-            rvm.review.author = authentication.currentUser().name;
+            rvm.review.author = authentication.currentUser()._id;
             rvm.review.createdOn = Date.now();
             product.reviews.push(rvm.review);
             rvm.review = null;

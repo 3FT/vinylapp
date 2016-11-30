@@ -1,9 +1,8 @@
-(function () {
+(function() {
 
     angular.module('vinylApp').factory('authentication', authentication);
 
     function authentication ($http, $window) {
-
 
         var saveToken = function (token) {
             $window.localStorage['mean-token'] = token;
@@ -35,8 +34,9 @@
                 payload = $window.atob(payload);
                 payload = JSON.parse(payload);
                 return {
-                    email : payload.email,
-                    name : payload.name
+                    _id: payload._id,
+                    email: payload.email
+                   // name: payload.name
                 };
             }
         };

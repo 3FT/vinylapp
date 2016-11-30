@@ -20,7 +20,7 @@ module.exports.createArtist = function(req, res, next) {
     /* jshint ignore:start */
     for (var attrname in req.body) { artist[attrname] = req.body[attrname];}
     /* jshint ignore:end */
-    artist.addedBy = req.payload.name;
+    artist.addedBy = req.payload._id;
     artist.dateAdded = Date.now();
     artist.save(function(err, artist) {
         if (err) {
