@@ -39,7 +39,7 @@ module.exports = function() {
             options: {
                 module: 'vinylApp',
                 standAlone: false,
-                root: 'app'
+                root: '/app'
             }
         },
 

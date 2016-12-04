@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('vinylApp').factory('vinylsData', vinylsData);
+    angular.module('vinylApp').factory('vinylsData',
+        ['$resource', 'Upload', 'authentication', vinylsData]);
 
     function vinylsData ($resource, Upload, authentication) {
 

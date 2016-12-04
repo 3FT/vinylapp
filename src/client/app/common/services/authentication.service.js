@@ -1,6 +1,7 @@
 (function() {
 
-    angular.module('vinylApp').factory('authentication', authentication);
+    angular.module('vinylApp').factory('authentication',
+        ['$http', '$window', authentication]);
 
     function authentication ($http, $window) {
 

@@ -1,8 +1,9 @@
-(function () {
+(function() {
 
-    angular.module('vinylApp').controller('artistsCreateCtrl', artistsCreateCtrl);
+    angular.module('vinylApp').controller('ArtistsCreateCtrl',
+        ['artistsData', '$location', ArtistsCreateCtrl]);
 
-    function artistsCreateCtrl (artistsData, $location) {
+    function ArtistsCreateCtrl (artistsData, $location) {
         var vm = this;
         vm.styles = ['rock','blues','funk'];
 
@@ -14,7 +15,6 @@
                 });
         };
     }
-
 }());
 
 

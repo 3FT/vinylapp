@@ -1,16 +1,16 @@
-(function () {
+(function() {
 
-     angular.module('vinylApp').config(function($routeProvider){
+     angular.module('vinylApp').config(['$routeProvider',function($routeProvider){
 
          $routeProvider
              .when('/artists', {
                  templateUrl: '/app/artists/views/index.html',
-                 controller: 'artistsIndexCtrl',
+                 controller: 'ArtistsIndexCtrl',
                  controllerAs: 'vm'
              })
              .when('/artists/new', {
                  templateUrl: '/app/artists/views/new.html',
-                 controller: 'artistsCreateCtrl',
+                 controller: 'ArtistsCreateCtrl',
                  controllerAs: 'vm'
              })
              .when('/artists/:id/edit', {
@@ -20,9 +20,8 @@
              })
              .when('/artists/:id', {
                  templateUrl: '/app/artists/views/show.html',
-                 controller: 'artistsShowCtrl',
+                 controller: 'ArtistsShowCtrl',
                  controllerAs: 'vm'
              });
-     });
-
+     }]);
 }());

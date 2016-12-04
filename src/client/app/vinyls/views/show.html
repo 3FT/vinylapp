@@ -24,7 +24,7 @@
     </h3>
     <p>{{vm.vinyl.year}}</p>
 
-    <tracklist-editor is-read-only="true"></tracklist-editor>
+    <tracklist-editor tracklist="vm.vinyl.tracklist" is-read-only="true"></tracklist-editor>
 
     <reviews product="vm.vinyl" update-method="vm.updateVinylReview"></reviews>
 
@@ -36,7 +36,3 @@
     </div>
 
 </div>
-
-
-
-

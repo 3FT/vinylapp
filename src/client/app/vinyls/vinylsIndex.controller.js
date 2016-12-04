@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('vinylApp').controller('vinylsIndexCtrl', vinylsIndexCtrl);
+    angular.module('vinylApp').controller('vinylsIndexCtrl',
+        ['vinylsData', 'time', '$interval', '$scope', vinylsIndexCtrl]);
 
      function vinylsIndexCtrl (vinylsData, time, $interval, $scope) {
          var vm = this;

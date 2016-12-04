@@ -1,6 +1,7 @@
 (function() {
 
-    angular.module('vinylApp').controller('vinylsShowCtrl', vinylsShowCtrl);
+    angular.module('vinylApp').controller('vinylsShowCtrl', ['vinylsData',
+        '$routeParams', '$location', 'authentication', vinylsShowCtrl]);
 
     function vinylsShowCtrl (vinylsData, $routeParams, $location, authentication) {
        var vm = this;

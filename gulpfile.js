@@ -130,7 +130,7 @@ gulp.task('optimize', ['inject'], function() {
             starttag: '<!-- inject:templates:js -->'
         }))
         .pipe($.useref({searchPath: './'}))
-        .pipe($.if('**/app.js', $.ngAnnotate()))
+        //.pipe($.if('**/app.js', $.ngAnnotate()))
         .pipe($.if('**/*.css', $.csso()))
         .pipe($.if('**/*.js', $.uglify()))
         .pipe(gulp.dest(config.build));
@@ -151,8 +151,8 @@ function serve(isDev) {
         script: config.nodeServer,
         delayTime: 1,
         env: {
-            'PORT': port,
-            'NODE_ENV': isDev ? 'dev' : 'build'
+             'PORT': port,
+             'NODE_ENV': isDev ? 'dev' : 'build'
         },
         watch: [config.server]
     };

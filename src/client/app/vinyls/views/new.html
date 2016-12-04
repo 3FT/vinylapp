@@ -4,22 +4,18 @@
         <fieldset class="form-group">
             <label for="description">artist</label><br>
             <select class="form-control" ng-options="artist._id for artist in vm.artists" ng-model="vm.vinyl.artist_id"></select>
-            <!--<input class="form-control" type="text" id="description" name="description" ng-model="vm.vinyl.artist_id">-->
         </fieldset>
         <fieldset class="form-group">
             <label for="title">album</label>
             <input class="form-control" type="text" id="title" name="title" ng-model="vm.vinyl.album">
         </fieldset>
-
         <fieldset class="form-group">
             <label for="content">year</label>
             <input class="form-control" type="text" id="content" name="content" ng-model="vm.vinyl.year">
         </fieldset>
-
         <fieldset class="form-group">
             <label for="cover">cover</label><br>
         </fieldset>
-
         <div class="row">
             <div class="col-sm-6">
                 <single-file-drop file="vm.vinyl.images.frontCover" caption="add front"></single-file-drop>
@@ -29,7 +25,7 @@
             </div>
         </div>
     </form>
-    <tracklist-editor></tracklist-editor>
+    <tracklist-editor tracklist="vm.vinyl.tracklist"></tracklist-editor>
     <button type="button" class="btn btn-success pull-right" ng-click="vm.createVinyl(vm.vinyl)">Save</button>
 </div>
 

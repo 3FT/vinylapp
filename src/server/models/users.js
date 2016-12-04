@@ -27,7 +27,7 @@ userSchema.methods.validPassword = function(password) {
 };
 
 userSchema.methods.generateJwt = function() {
-    var expiry = new Date();
+     var expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
    // var test = parseInt(expiry.getTime() / 1000) + 10;
     return jwt.sign({

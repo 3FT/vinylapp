@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('vinylApp').config(function($routeProvider){
+    angular.module('vinylApp').config(['$routeProvider', function($routeProvider){
 
         $routeProvider
             .when('/', {
@@ -48,6 +48,16 @@
                 controller: 'usersIndexCtrl',
                 controllerAs: 'vm'
             })
+            .when('/users/new', {
+                templateUrl: '/app/users/views/new.html',
+                controller: 'UsersCreateCtrl',
+                controllerAs: 'vm'
+            })
+            .when('/users/:id/edit', {
+                templateUrl: '/app/users/views/edit.html',
+                controller: 'UsersEditCtrl',
+                controllerAs: 'vm'
+            })
             .when('/users/:id', {
                 templateUrl: '/app/users/views/show.html',
                 controller: 'usersShowCtrl',
@@ -55,6 +65,6 @@
             })
             .otherwise({redirectTo: '/'});
 
-    });
+    }]);
 
 }());

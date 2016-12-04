@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('vinylApp').controller('navigationCtrl', navigationCtrl);
+    angular.module('vinylApp').controller('navigationCtrl',
+        ['$location', 'authentication', navigationCtrl]);
 
      function navigationCtrl($location, authentication) {
 

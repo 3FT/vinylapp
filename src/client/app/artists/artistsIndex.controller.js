@@ -1,8 +1,10 @@
-(function () {
+(function() {
 
-    angular.module('vinylApp').controller('artistsIndexCtrl', artistsIndexCtrl);
+    angular.module('vinylApp').controller('ArtistsIndexCtrl',
+        ['artistsData', 'time', ArtistsIndexCtrl]);
 
-    function artistsIndexCtrl (artistsData, time) {
+
+    function ArtistsIndexCtrl (artistsData, time) {
         var vm = this;
         vm.artists = artistsData.getAllArtists();
 
@@ -10,5 +12,4 @@
             return time.getTime(dateAdded);
         };
     }
-
 }());

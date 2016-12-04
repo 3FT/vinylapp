@@ -13,7 +13,7 @@ var routesVinyls = require('./routes/vinyls');
 var routesUsers = require('./routes/users');
 var routesArtists = require('./routes/artists');
 
-
+var projectDir = __dirname + '/../../';
 var port = process.env.PORT || 7203;
 var environment = process.env.NODE_ENV;
 
@@ -57,18 +57,19 @@ if (!fs.existsSync(dir)){
 // common directory for uploads and images
 app.use(express.static('./public/'));
 
+
 switch (environment) {
     case 'build':
         console.log('** BUILD **');
-        app.use(express.static('./build/'));
-        app.use('/*', express.static('./build/index.html'));
+        app.use(express.static(projectDir + './build/'));
+        app.use('/*', express.static(projectDir + './build/index.html'));
         break;
     default:
         console.log('** DEV **');
-        app.use(express.static('./src/client/'));
-        app.use(express.static('./'));
-        app.use(express.static('./tmp'));
-        app.use('/*', express.static('./src/client/index.html'));
+        app.use(express.static(projectDir + './src/client/'));
+        app.use(express.static(projectDir + './'));
+        app.use(express.static(projectDir + './tmp'));
+        app.use('/*', express.static(projectDir + './src/client/index.html'));
         break;
 }
 

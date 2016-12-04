@@ -1,11 +1,19 @@
 (function () {
 
-    angular.module('vinylApp').controller('vinylsEditCtrl', vinylsEditCtrl);
+    angular.module('vinylApp').controller('vinylsEditCtrl',
+        ['vinylsData', 'artistsData', '$routeParams', '$location', 'toastrNotification', vinylsEditCtrl]);
 
-    function vinylsEditCtrl(vinylsData, artistsData, $routeParams, $location) {
+    function vinylsEditCtrl(vinylsData, artistsData, $routeParams, $location, toastrNotification) {
         var vm = this;
 
-        vm.vinyl = vinylsData.getVinyl($routeParams.id);
+        // vm.vinyl = vinylsData.getVinyl($routeParams.id);
+
+        vinylsData.getVinyl($routeParams.id)
+            .$promise
+            .then(function(data) {
+                vm.vinyl = data;
+              //  debugger;
+            });
 
         vm.artists = artistsData.getAllArtists();
 
@@ -15,6 +23,7 @@
                 .then(function(res){
                     vinylsData.updateVinylFile(vinyl)
                         .then(function(res){
+                            toastrNotification.success('vinyl updated');
                             $location.path('/vinyls/' + vinyl._id);
                         });
                 });

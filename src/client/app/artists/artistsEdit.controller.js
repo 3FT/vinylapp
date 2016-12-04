@@ -1,6 +1,7 @@
-(function () {
+(function() {
 
-    angular.module('vinylApp').controller('ArtistsEditCtrl', ArtistsEditCtrl);
+    angular.module('vinylApp').controller('ArtistsEditCtrl',
+        ['artistsData', '$routeParams', '$location', ArtistsEditCtrl]);
 
     function ArtistsEditCtrl (artistsData, $routeParams, $location) {
         var vm = this;
@@ -19,7 +20,6 @@
             ;
         };
     }
-
 }());
 
 

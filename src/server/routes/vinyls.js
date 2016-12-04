@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var auth = require('../config/jwt');
 
 var ctrlVinyls = require('../controllers/vinyls');
@@ -13,7 +12,7 @@ router.post('/', auth, ctrlVinyls.vinylJsonFilter, ctrlVinyls.createVinyl);
 
 router.put('/files/:id', auth, ctrlVinyls.processFiles, ctrlVinyls.updateVinylFile);
 router.put('/reviews/:id', auth, ctrlVinyls.updateAverageRating, ctrlVinyls.updateVinyl);
-router.put('/:id', ctrlVinyls.checkOwnership, ctrlVinyls.vinylJsonFilter,  auth, ctrlVinyls.updateVinyl);
+router.put('/:id', auth, ctrlVinyls.checkOwnership, ctrlVinyls.vinylJsonFilter, ctrlVinyls.updateVinyl);
 
 router.delete('/:id', auth, ctrlVinyls.deleteVinyl);
 

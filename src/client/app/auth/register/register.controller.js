@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('vinylApp').controller('registerCtrl', registerCtrl);
+    angular.module('vinylApp').controller('registerCtrl',
+        ['$location', 'authentication', registerCtrl]);
 
      function registerCtrl($location, authentication) {
          var vm = this;

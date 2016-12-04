@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('vinylApp').controller('homeCtrl', homeCtrl);
+    angular.module('vinylApp').controller('homeCtrl',
+        ['authentication', homeCtrl]);
 
     function homeCtrl(authentication) {
 

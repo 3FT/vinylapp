@@ -1,6 +1,6 @@
 (function() {
 
-    angular.module('vinylApp').controller('reviewsCtrl', reviewsCtrl);
+    angular.module('vinylApp').controller('reviewsCtrl', ['authentication', reviewsCtrl]);
 
     function reviewsCtrl(authentication) {
 

@@ -1,12 +1,8 @@
 var mongoose = require('mongoose');
 var Vinyl = mongoose.model('Vinyl');
-
-
 var multer  = require('multer');
 
-
 var storage = multer.diskStorage({
-
     destination: './public/uploads/',
     filename: function (req, file, cb) {
         //var fileName = req.body.artist_id + req.body.album + file.fieldname + '-' + Date.now();
@@ -15,7 +11,6 @@ var storage = multer.diskStorage({
         cb(null, fileName);
     }
 });
-
 
 var upload = multer({ storage: storage });
 
@@ -101,7 +96,7 @@ module.exports.updateVinylFile = function(req, res, next) {
 module.exports.deleteVinyl = function(req, res, next) {
      Vinyl.findById(req.params.id, function (err, vinyl) {
 
-         vinyl.remove(function (err) {
+         vinyl.remove(function(err) {
              if (err) {
                  return next(err);
              }
@@ -115,15 +110,15 @@ module.exports.checkOwnership = function(req, res, next) {
         if (err) { return next(err);}
 
         // check Vinyl owner
-        if (req.payload.name !== vinyl.addedBy) {
+        // check unauthorized problem
+        if (req.payload._id !== vinyl.addedBy) {
             res.status(403).json({message: 'unauthorized'});
             return;
+        } else {
+            next();
         }
     });
-
-    next();
 };
-
 
 module.exports.vinylJsonFilter = function(req, res, next) {
     var filter = {
@@ -141,7 +136,6 @@ module.exports.vinylJsonFilter = function(req, res, next) {
 
 module.exports.updateAverageRating = function(req, res, next) {
     var sum = 0;
-
     var reviews = req.body.reviews;
 
     for (var i = 0; i < reviews.length; i++) {

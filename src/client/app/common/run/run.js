@@ -1,3 +1,4 @@
+/*
 (function () {
 
      angular.module('vinylApp').run(function($rootScope, $location, authentication){
@@ -10,4 +11,4 @@
 
      });
 
-}());
+}());*/

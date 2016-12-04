@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('vinylApp').controller('loginCtrl', loginCtrl);
+    angular.module('vinylApp').controller('loginCtrl', ['$location',
+        'authentication', loginCtrl]);
 
      function loginCtrl($location, authentication) {
          var vm = this;

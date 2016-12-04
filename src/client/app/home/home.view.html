@@ -1,9 +1,9 @@
 <div class="container" ng-hide="vm.isLoggedIn()">
     <h1>Hello there</h1>
-    <p>Won't you please <a href="#/login">sign in</a> or <a href="#/register">register</a>?</p>
+    <p>Won't you please <a href="#/login">sign in</a> or <a href="#/users/new">register</a>?</p>
 </div>
 
-<div class="container" ng-show="vm.isLoggedIn()">
+<div class="container" ng-if="vm.isLoggedIn()">
     <h1>Welcome {{vm.currentUser()._id}} !</h1>
     <dashboard></dashboard>
 </div>

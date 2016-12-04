@@ -1,9 +1,10 @@
 (function () {
+'use strict';
 
-    angular.module('vinylApp').controller('usersIndexCtrl', usersIndexCtrl);
+    angular.module('vinylApp').controller('usersIndexCtrl', ['usersData',
+        'time', '$interval', '$scope', usersIndexCtrl]);
 
     function usersIndexCtrl (usersData, time, $interval, $scope) {
-
         var vm = this;
         vm.users = usersData.getAllUsers();
 
@@ -19,5 +20,4 @@
             $interval.cancel(interval);
         });
     }
-
 }());
