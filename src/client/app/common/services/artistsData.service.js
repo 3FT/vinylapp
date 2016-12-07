@@ -1,9 +1,9 @@
 (function() {
 
     angular.module('vinylApp').factory('artistsData',
-        ['$resource', 'authentication', artistsData]);
+        ['$resource', 'authentication','Upload', artistsData]);
 
-    function artistsData($resource, authentication) {
+    function artistsData($resource, authentication, Upload) {
 
         var url = '/artists/:id';
 
@@ -45,12 +45,29 @@
             return artistResource.update({id: artist._id}, artist);
         };
 
+        var updateArtistFiles = function(artist){
+            var images = artist.images;
+            return Upload.upload({
+                method: 'PUT',
+                url: '/artists/files/' + artist._id,
+                headers: {
+                    Authorization: 'Bearer ' + authentication.getToken()
+                },
+                arrayKey: '',
+                data: {
+                    images: images
+                }
+            });
+
+        };
+
         return {
             getAllArtists: getAllArtists,
             getArtist: getArtist,
             createArtist: createArtist,
             deleteArtist: deleteArtist,
-            updateArtist: updateArtist
+            updateArtist: updateArtist,
+            updateArtistFiles: updateArtistFiles
         };
     }
 

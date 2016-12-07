@@ -1,7 +1,7 @@
-(function () {
+(function() {
+'use strict';
 
     angular.module('vinylApp').directive('singleFileDrop', function(){
-
          return {
              replace: true,
              restrict: 'E',

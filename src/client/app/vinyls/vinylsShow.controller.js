@@ -9,6 +9,7 @@
         vinylsData.getVinyl($routeParams.id)
             .$promise
             .then(function(vinyl){
+                console.log(vinyl);
                 vm.vinyl = vinyl;
                 vm.isOwner = authentication.currentUser() && authentication.currentUser()._id === vinyl.addedBy;
             });

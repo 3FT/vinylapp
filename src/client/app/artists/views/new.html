@@ -8,4 +8,30 @@
     <select class="form-control" ng-options="style for style in vm.styles" ng-model="vm.artist.style"></select>
     <!--<input type="password" class="form-control" id="pwd">-->
 </div>
-<button type="button" class="btn btn-success pull-right" ng-click="vm.createArtist(vm.artist)">Save</button></div>
+    <div class="row">
+
+        <div class="col-sm-3" ng-repeat="image in vm.artist.images">
+            <img ng-show="image" ngf-thumbnail="image">
+            <br>
+            <button type="button" class="btn btn-danger" ng-click="vm.removeImage(vm.artist.images, $index)">remove</button>
+        </div>
+
+        <div class="col-sm-3">
+                 <div ng-hide="image"
+                     ngf-drop
+                     ngf-multiple="true"
+                     ng-model="vm.uploads"
+                     name="avatar"
+                     ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'"
+                     ngf-max-size="20MB"
+                     ngf-min-height="1"
+                     ngf-resize="{width: 300, height: 300, centerCrop: true}"
+                     class="upload-drop-zone">
+                     Drop files here
+                 </div>
+        </div>
+               <!--   <img ng-show="image" ngf-thumbnail="image">-->
+    </div>
+
+<button type="button" class="btn btn-success" ng-click="vm.createArtist(vm.artist)">Save</button></div>

@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
             <label for="password">Confirm password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.user.passwordCopy">
+            <input type="password" match="vm.user.password" class="form-control" id="password" placeholder="Password" ng-model="vm.user.passwordCopy">
         </div>
         <button type="submit" class="btn btn-success" ng-click="vm.updateUser(vm.user)">Update my profile</button>
     </form>

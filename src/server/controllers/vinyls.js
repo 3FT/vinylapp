@@ -3,11 +3,11 @@ var Vinyl = mongoose.model('Vinyl');
 var multer  = require('multer');
 
 var storage = multer.diskStorage({
-    destination: './public/uploads/',
+    destination: './public/uploads/vinyls/',
     filename: function (req, file, cb) {
         //var fileName = req.body.artist_id + req.body.album + file.fieldname + '-' + Date.now();
         var fileName = file.originalname;
-        req.body[file.fieldname] = '/uploads/' + fileName;
+        req.body[file.fieldname] = '/uploads/vinyls/' + fileName;
         cb(null, fileName);
     }
 });

@@ -7,7 +7,8 @@ var artistSchema = new mongoose.Schema({
         enum : ['rock','blues','funk']
     },
     addedBy: String,
-    dateAdded: Number
+    dateAdded: Number,
+    images: [String]
 });
 
 mongoose.model('Artist', artistSchema);
