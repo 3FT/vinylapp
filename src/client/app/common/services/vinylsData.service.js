@@ -11,7 +11,7 @@
         // Pass session token as Authorization header
         var headers = {
              'Authorization': function(){ return 'Bearer ' + authentication.getToken(); }
-        };
+    };
 
         // Assemble actions with custom headers attached
         var actions = {

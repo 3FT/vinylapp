@@ -13,15 +13,15 @@
 
 
          vm.onSubmit = function () {
-
              authentication
                  .login(vm.credentials)
-                 .error(function(err){
-                     vm.errMessage = err.message;
-                 })
                  .then(function(){
                      $location.path('/');
-                 });
+                 })
+                 .catch(function(err) {
+                     vm.errMessage = err.message;
+                 })
+             ;
          };
      }
 

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/#/">Vynil store</a>
+            <a class="navbar-brand" href="/#/">Vinyl store</a>
         </div>
         <ul class="nav navbar-nav ">
             <li><a href="#/vinyls">Vinyls</a></li>
@@ -10,7 +10,6 @@
             <li ng-show="navvm.isLoggedIn()"><a href="#/artists/new">Add artist</a></li>
             <li><a href="#/users">Users</a></li>
         </ul>
-
         <ul class="nav navbar-nav navbar-right">
             <li ng-hide="navvm.isLoggedIn()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
             <li ng-show="navvm.isLoggedIn()"><a href="#/users/{{navvm.currentUser()._id}}"><span class="glyphicon glyphicon-user"></span> {{navvm.currentUser()._id}}</a></li>

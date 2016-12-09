@@ -1,14 +1,7 @@
-/*
 (function () {
 
-     angular.module('vinylApp').run(function($rootScope, $location, authentication){
+    angular.module('vinylApp').config(['$locationProvider', function($locationProvider) {
+        $locationProvider.hashPrefix('');
+    }]);
 
-         $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-             if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
-                 $location.path('/');
-             }
-         });
-
-     });
-
-}());*/
+}());

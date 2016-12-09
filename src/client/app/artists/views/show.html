@@ -1,17 +1,27 @@
 <div class="container">
-    <h2>
-        artist
-    </h2>
-    <p>{{vm.artist._id}}</p>
+    <div class="jumbotron">
+        <h1>
+            {{vm.artist._id}}
+        </h1>
+    </div>
+
     <h3>
         style
     </h3>
     <p>{{vm.artist.style}}</p>
 
+    <div active="active" uib-carousel>
+                <div uib-slide ng-repeat="image in vm.artist.images track by $index" index="$index">
+                    <img ng-src="{{image}}" style="width:100%;">
+                </div>
+    </div>
+
+
+
     <div ng-show="vm.isOwner">
         <a href="#/artists/{{vm.artist._id}}/edit/">
-            <button type="button" class="btn btn-warning pull-right">Edit</button>
+            <button type="button" class="btn btn-warning">Edit</button>
         </a>
-        <button type="button" class="btn btn-danger pull-right" ng-click="vm.deleteArtist(vm.artist)">Delete</button>
+        <button type="button" class="btn btn-danger" ng-click="vm.deleteArtist(vm.artist)">Delete</button>
     </div>
 </div>

@@ -6,8 +6,10 @@
     function ArtistsCreateCtrl (artistsData, $location, toastrNotification, $scope) {
         var vm = this;
         vm.styles = ['rock','blues','funk'];
-        vm.artist = {};
-        vm.artist.images = [];
+        vm.artist = {
+            images: []
+        };
+
 
         vm.createArtist = function(artist) {
             console.log(artist);

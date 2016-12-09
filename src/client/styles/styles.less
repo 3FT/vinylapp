@@ -1,16 +1,16 @@
 @import "less/bootstrap.less";
 
 
-
-
-
+.selected {
+  color:red;
+}
 
 /**
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
  */
-.tracklist ul[dnd-list],
-.tracklist ul[dnd-list] > li {
+.simpleDemo ul[dnd-list],
+.simpleDemo ul[dnd-list] > li {
   position: relative;
 }
 
@@ -18,7 +18,7 @@
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
-.tracklist ul[dnd-list] {
+.simpleDemo ul[dnd-list] {
   min-height: 42px;
   padding-left: 0px;
 }
@@ -29,7 +29,7 @@
  * sense to hide it to give the user the feeling
  * that he's actually moving it.
  */
-.tracklist ul[dnd-list] .dndDraggingSource {
+.simpleDemo ul[dnd-list] .dndDraggingSource {
   display: none;
 }
 
@@ -38,7 +38,7 @@
  * added to the dnd-list while the user is dragging
  * over it.
  */
-.tracklist ul[dnd-list] .dndPlaceholder {
+.simpleDemo ul[dnd-list] .dndPlaceholder {
   display: block;
   background-color: #ddd;
   min-height: 42px;
@@ -51,7 +51,7 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
-.tracklist ul[dnd-list] li {
+.simpleDemo ul[dnd-list] li {
   background-color: #fff;
   border: 1px solid #ddd;
   border-top-right-radius: 4px;
@@ -60,6 +60,19 @@
   padding: 10px 15px;
   margin-bottom: -1px;
 }
+
+/**
+ * Show selected elements in green
+ */
+.simpleDemo ul[dnd-list] li.selected {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+
+
+
+
 
 
 /* layout.css Style */

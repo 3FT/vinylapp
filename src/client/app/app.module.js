@@ -4,8 +4,9 @@
                                 'ngGravatar',
                                 'ngFileUpload',
                                 'ngResource',
-                                'dndLists',
                                 'validation.match',
-                                'ui.bootstrap']);
+                                'ngAnimate',
+                                'ui.bootstrap',
+                                'ui.sortable']);
 
 })();

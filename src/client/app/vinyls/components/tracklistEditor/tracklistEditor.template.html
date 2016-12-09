@@ -1,0 +1,32 @@
+<h3>tracklist</h3>
+
+<p ng-hide="vm.tracklist.length">No tracks added yet...</p>
+
+{{vm.isReadOnly}}
+
+<ul ui-sortable class="list-group" ng-model="vm.tracklist">
+    <li class="list-group-item" ng-repeat="track in vm.tracklist track by $index">
+        {{$index + 1}}
+        {{track.title}}
+        <span class="pull-right">
+            {{track.duration.minutes}}:{{track.duration.seconds | twoDigits}}
+            <a ng-hide="vm.isReadOnly" ng-click="tvm.removeTrack(item, tracklist)">remove</a>
+        </span>
+    </li>
+</ul>
+
+<form ng-hide="vm.isReadOnly" class="form-inline" ng-submit="tvm.addTrack(vm.track, vm.tracklist)">
+    <fieldset class="form-group">
+        <label for="track-title">track title</label>
+        <input class="form-control" type="text" id="track-title" ng-model="vm.track.title" placeholder="Enter track name here..." required>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="track-duration">track duration</label>
+        <span>
+                <input ng-model="tvm.track.duration.minutes" type="number" class="form-control" placeholder="00" min="0" max="60" step="1" required>
+                <span>:</span>
+                <input id="track-duration" ng-model="vm.track.duration.seconds" type="number" class="form-control" placeholder="00" min="0" max="59" step="1" required>
+        </span>
+    </fieldset>
+    <input type="submit" class="btn btn-primary" value="add track"/>
+</form>

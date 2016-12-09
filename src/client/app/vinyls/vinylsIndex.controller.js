@@ -9,7 +9,6 @@
          vm.vinyls = vinylsData.getAllVinyls();
 
          vm.getTime = function (dateAdded) {
-
              return time.getTime(dateAdded);
          };
 

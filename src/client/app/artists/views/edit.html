@@ -1,12 +1,11 @@
 <div class="container">
-    <h1>Edit Artist</h1>
-    <div class="form-group">
-        <label for="usr">Name:</label>
-        <input type="text" class="form-control" id="usr" ng-model="vm.artist._id">
-    </div>
-    <div class="form-group">
-        <label for="style">Style:</label><br>
-        <select class="form-control" ng-options="style for style in vm.styles" ng-model="vm.artist.style"></select>
-    </div>
-    <button type="button" class="btn btn-success pull-right" ng-click="vm.updateArtist(vm.artist)">Update</button>
+    <h1>You are editing artist {{vm.artist._id}}...</h1>
+    <form name="newUserForm" novalidate ng-submit="newUserForm.$valid && vm.updateArtist(vm.artist)">
+        <div class="form-group">
+            <label for="style">Style:</label><br>
+            <select class="form-control" id="style" ng-options="style for style in vm.styles" ng-model="vm.artist.style" required></select>
+        </div>
+        <upload-box images="vm.artist.images"></upload-box>
+        <button type="submit" class="btn btn-success">Save your Update</button>
+    </form>
 </div>

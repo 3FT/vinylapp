@@ -1,37 +1,15 @@
-<div class="container"><div class="form-group">
+<div class="container">
     <h1>New Artist</h1>
-    <label for="usr">Name:</label>
-    <input type="text" class="form-control" id="usr" ng-model="vm.artist._id">
-</div>
-<div class="form-group">
-    <label for="style">Style:</label><br>
-    <select class="form-control" ng-options="style for style in vm.styles" ng-model="vm.artist.style"></select>
-    <!--<input type="password" class="form-control" id="pwd">-->
-</div>
-    <div class="row">
-
-        <div class="col-sm-3" ng-repeat="image in vm.artist.images">
-            <img ng-show="image" ngf-thumbnail="image">
-            <br>
-            <button type="button" class="btn btn-danger" ng-click="vm.removeImage(vm.artist.images, $index)">remove</button>
+    <form name="newUserForm" novalidate ng-submit="newUserForm.$valid && vm.createArtist(vm.artist)">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" ng-model="vm.artist._id" required>
         </div>
-
-        <div class="col-sm-3">
-                 <div ng-hide="image"
-                     ngf-drop
-                     ngf-multiple="true"
-                     ng-model="vm.uploads"
-                     name="avatar"
-                     ngf-pattern="'image/*'"
-                     ngf-accept="'image/*'"
-                     ngf-max-size="20MB"
-                     ngf-min-height="1"
-                     ngf-resize="{width: 300, height: 300, centerCrop: true}"
-                     class="upload-drop-zone">
-                     Drop files here
-                 </div>
+        <div class="form-group">
+            <label for="style">Style:</label><br>
+            <select class="form-control" id="style" ng-options="style for style in vm.styles" ng-model="vm.artist.style" required></select>
         </div>
-               <!--   <img ng-show="image" ngf-thumbnail="image">-->
-    </div>
-
-<button type="button" class="btn btn-success" ng-click="vm.createArtist(vm.artist)">Save</button></div>
+        <upload-box images="vm.artist.images"></upload-box>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>

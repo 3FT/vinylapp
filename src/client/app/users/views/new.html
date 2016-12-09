@@ -1,7 +1,7 @@
 <error-header message="vm.errMessage"></error-header>
 
 <div class="container">
-    <form novalidate name="register">
+    <form novalidate name="registerForm" ng-submit="registerForm.$valid && vm.createUser(vm.user)">
         <div class="form-group">
             <label for="name">Full name</label>
             <input type="text" required class="form-control" id="name" placeholder="Enter your name" ng-model="vm.user._id">
@@ -18,10 +18,10 @@
             <label for="passwordCOpy">Confirm password</label>
             <input type="password" match="vm.user.password" required class="form-control" id="passwordCopy" name="passwordCopy" placeholder="Password" ng-model="vm.user.passwordCopy">
         </div>
-        <button type="submit" class="btn btn-default" ng-click="register.$valid && vm.createUser(vm.user)">Register!</button>
+        <button type="submit" class="btn btn-default">Register!</button>
     </form>
 </div>
 
 
-<pre>register.password.$error = {{ register.password.$error | json }}</pre>
-<pre>register.passwordCopy.$error = {{ register.passwordCopy.$error | json }}</pre>
+<pre>registerForm.password.$error = {{ register.password.$error | json }}</pre>
+<pre>registerForm.passwordCopy.$error = {{ register.passwordCopy.$error | json }}</pre>

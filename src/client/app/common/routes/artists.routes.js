@@ -1,3 +1,4 @@
+/*
 (function() {
 
      angular.module('vinylApp').config(['$routeProvider',function($routeProvider){
@@ -25,3 +26,4 @@
              });
      }]);
 }());
+*/

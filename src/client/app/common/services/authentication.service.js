@@ -1,4 +1,5 @@
 (function() {
+'use strict';
 
     angular.module('vinylApp').factory('authentication',
         ['$http', '$window', authentication]);
@@ -37,20 +38,15 @@
                 return {
                     _id: payload._id,
                     email: payload.email
-                   // name: payload.name
                 };
             }
         };
 
-        var register = function(user) {
-            return $http.post('/auth/register', user).success(function(data){
-                saveToken(data.token);
-            });
-        };
-
         var login = function(user) {
-            return $http.post('/auth/login', user).success(function(data) {
-                saveToken(data.token);
+            return $http.post('/auth/login', user).then(function(res) {
+                console.log(res);
+                debugger;
+                saveToken(res.data.token);
             });
         };
 
@@ -63,7 +59,6 @@
             saveToken : saveToken,
             getToken : getToken,
             isLoggedIn : isLoggedIn,
-            register : register,
             login : login,
             logout : logout
         };
