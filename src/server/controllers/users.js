@@ -17,13 +17,15 @@ module.exports.getAllUsers = function(req, res) {
         });
 };
 
-module.exports.updateUser = function(req, res) {
+module.exports.updateUser = function(req, res, next) {
 
     User.findById(req.params.id, function (err, user) {
         // handle null
         user._id = req.body._id;
         user.email = req.body.email;
-        user.setPassword(req.body.password);
+        if (req.body.password) {
+            user.setPassword(req.body.password);
+        }
 
         user.save(function(err, updatedUser) {
 
