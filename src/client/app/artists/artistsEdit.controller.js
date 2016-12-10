@@ -12,8 +12,11 @@
             artistsData.updateArtist(artist)
                 .$promise
                 .then(function(res) {
-                    toastrNotification.success('artist updated');
-                    $location.path('/artists/' + artist._id);
+                    artistsData.updateArtistFiles(artist)
+                        .then(function(res) {
+                            toastrNotification.success('artist updated');
+                            $location.path('/artists/' + artist._id);
+                        });
                 })
                 .catch(function(res) {
                     console.log(res.data.message);
