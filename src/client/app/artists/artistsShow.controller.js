@@ -1,9 +1,9 @@
 (function(){
 
     angular.module('vinylApp').controller('ArtistsShowCtrl',
-        ['artistsData', 'authentication', '$routeParams', '$location', ArtistsShowCtrl]);
+        ['artistsData', 'authentication', '$routeParams', '$location', 'toastrNotification', ArtistsShowCtrl]);
 
-    function ArtistsShowCtrl (artistsData, authentication, $routeParams, $location) {
+    function ArtistsShowCtrl (artistsData, authentication, $routeParams, $location, toastrNotification) {
         var vm = this;
 
         artistsData.getArtist($routeParams.id)
@@ -20,6 +20,7 @@
             artistsData.deleteArtist($routeParams.id)
                 .$promise
                 .then(function(res){
+                    toastrNotification.success('artist deleted');
                     $location.path('/artists');
                 });
         };

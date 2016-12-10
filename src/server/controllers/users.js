@@ -38,7 +38,7 @@ module.exports.updateUser = function(req, res) {
     });
 };
 
-module.exports.createUser = function(req, res) {
+module.exports.createUser = function(req, res, next) {
     var duplicateEmailErrCode = 11000;
 
     // Check fields
@@ -59,10 +59,8 @@ module.exports.createUser = function(req, res) {
     user.setPassword(req.body.password);
 
     user.save(function(err) {
-
         // Send error response if duplicate account
         if (err) {
-
             if (err.code === duplicateEmailErrCode) {
                 err.status = 400;
                 err.message = 'User or email already exist...';
@@ -78,6 +76,5 @@ module.exports.createUser = function(req, res) {
             'token' : token
         });
     });
-
 };
 

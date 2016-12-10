@@ -3,7 +3,7 @@
 
     angular.module('vinylApp').component('navigation', {
         templateUrl: '/app/common/components/navigation/navigation.template.html',
-        controller: NavigationController,
+        controller: ['$location', 'authentication', NavigationController],
         controllerAs: 'vm',
         bindings: {
             images: '='

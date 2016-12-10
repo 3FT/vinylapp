@@ -1,12 +1,3 @@
-rating value {{vm.ratingValue}}
-<br>
-
-eprcentage {{vm.percentage}}
-<br>
-{{vm.isReadOnly}}
-<br>
-{{vm.getNumber(max)}}
-
 <div ng-hide="!vm.ratingValue && vm.isReadOnly" class="star-ratings-css">
     <div class="star-ratings-css-top" style="width: {{vm.percentage}}">
         <span ng-repeat="star in vm.getNumber(vm.max) track by $index" ng-click="vm.toggle($index)" class="glyphicon glyphicon-star"></span>
@@ -15,4 +6,4 @@ eprcentage {{vm.percentage}}
         <span ng-repeat="star in vm.getNumber(vm.max) track by $index" ng-click="vm.toggle($index)" class="glyphicon glyphicon-star"></span>
     </div>
 </div>
-<p ng-show="!vm.ratingValue && vm.isReadOnly">No ratings added yet</p>
+<p ng-show="!vm.ratingValue && vm.isReadOnly">No ratings added yet...</p>

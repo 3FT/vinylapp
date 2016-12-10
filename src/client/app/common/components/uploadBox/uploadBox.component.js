@@ -3,7 +3,7 @@
 
     angular.module('vinylApp').component('uploadBox', {
         templateUrl: '/app/common/components/uploadBox/uploadBox.template.html',
-        controller: UploadBoxController,
+        controller: ['$scope', UploadBoxController],
         controllerAs: 'vm',
         bindings: {
             images: '='

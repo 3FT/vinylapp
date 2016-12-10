@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('vinylApp').component('tracklistEditor', {
-        templateUrl: '/app/vinyls/components/trackListEditor/trackListEditor.template.html',
+        templateUrl: '/app/vinyls/components/tracklistEditor/tracklistEditor.template.html',
         controller: TracklistController,
         controllerAs: 'vm',
         bindings: {

@@ -61,7 +61,7 @@ module.exports.createVinyl = function(req, res, next) {
 };
 
 module.exports.updateVinyl = function(req, res, next) {
-
+        console.log("updating: " + req.params.id);
     Vinyl.findById(req.params.id, function (err, vinyl) {
         /* jshint ignore:start */
         for (var attrname in req.body) { vinyl[attrname] = req.body[attrname];}
@@ -128,6 +128,15 @@ module.exports.vinylJsonFilter = function(req, res, next) {
         /*jshint +W106 */
         tracklist: req.body.tracklist,
         year: req.body.year
+    };
+
+    req.body = filter;
+    next();
+};
+
+module.exports.vinylReviewsFilter = function(req, res, next) {
+    var filter = {
+        reviews: req.body.reviews
     };
 
     req.body = filter;

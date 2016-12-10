@@ -1,6 +1,6 @@
 <!--Here is the preview-->
 <ul ui-sortable ng-model="vm.images" class="row">
-    <li ng-repeat="image in vm.images" class="col-sm-3">
+    <li ng-repeat="image in vm.images track by $index" class="col-sm-3">
         <img ng-show="image" ngf-thumbnail="image" style="width: 100%">
         <br>
         <button type="button" class="btn btn-danger" ng-click="vm.removeImage(vm.images, $index)">remove</button>
@@ -15,7 +15,7 @@
          ngf-accept="'image/*'"
          ngf-max-size="20MB"
          ngf-min-height="1"
-         ngf-resize="{width: 300, height: 300, centerCrop: true}"
+         ngf-resize="{width: 400, height: 400, centerCrop: true}"
          class="upload-drop-zone">
         Drop files here
     </div>

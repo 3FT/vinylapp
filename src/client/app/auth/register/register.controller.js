@@ -19,6 +19,7 @@
                      $location.path('/');
                  })
                  .catch(function (err) {
+                     console.log(err);
                      vm.errMessage = err.data.message;
                  });
          };
