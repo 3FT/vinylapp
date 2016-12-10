@@ -4,7 +4,11 @@
     angular.module('vinylApp').component('navigation', {
         templateUrl: '/app/common/components/navigation/navigation.template.html',
         controller: NavigationController,
-        controllerAs: 'navvm'
+        controllerAs: 'vm',
+        bindings: {
+            images: '='
+        }
+
     });
 
     function NavigationController($location, authentication) {

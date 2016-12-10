@@ -11,7 +11,7 @@
         }
     });
 
-    function TracklistController($scope) {
+    function TracklistController() {
         var vm = this;
 
         vm.addTrack = function(track, tracklist){
@@ -33,7 +33,6 @@
 
         vm.sortableOptions = {
             update: function(e, ui) {console.log(vm.tracklist);
-
             }
         };
     }

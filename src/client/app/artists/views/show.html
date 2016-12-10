@@ -4,20 +4,15 @@
             {{vm.artist._id}}
         </h1>
     </div>
-
     <h3>
         style
     </h3>
     <p>{{vm.artist.style}}</p>
-
     <div active="active" uib-carousel>
                 <div uib-slide ng-repeat="image in vm.artist.images track by $index" index="$index">
                     <img ng-src="{{image}}" style="width:100%;">
                 </div>
     </div>
-
-
-
     <div ng-show="vm.isOwner">
         <a href="#/artists/{{vm.artist._id}}/edit/">
             <button type="button" class="btn btn-warning">Edit</button>

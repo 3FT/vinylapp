@@ -10,7 +10,6 @@
             images: []
         };
 
-
         vm.createArtist = function(artist) {
             console.log(artist);
             artistsData.createArtist(artist)
@@ -30,17 +29,14 @@
         };
 
         $scope.$watch('vm.uploads', function(newValue, oldValue) {
-         if (newValue) {
-            for (var i = 0; i < newValue.length; i++) {
-                vm.artist.images.push(newValue[i]);
-                //Do something
-            }
-         }
+             if (newValue) {
+                for (var i = 0; i < newValue.length; i++) {
+                    vm.artist.images.push(newValue[i]);
+                }
+             }
         });
-
-
-
     }
+
 }());
 
 

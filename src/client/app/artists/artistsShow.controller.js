@@ -1,9 +1,9 @@
 (function(){
 
     angular.module('vinylApp').controller('ArtistsShowCtrl',
-        ['artistsData', 'authentication', '$routeParams', '$location', '$uibModal', ArtistsShowCtrl]);
+        ['artistsData', 'authentication', '$routeParams', '$location', ArtistsShowCtrl]);
 
-    function ArtistsShowCtrl (artistsData, authentication, $routeParams, $location, $uibModal) {
+    function ArtistsShowCtrl (artistsData, authentication, $routeParams, $location) {
         var vm = this;
 
         artistsData.getArtist($routeParams.id)
@@ -23,7 +23,6 @@
                     $location.path('/artists');
                 });
         };
-
-
     }
+
 }());

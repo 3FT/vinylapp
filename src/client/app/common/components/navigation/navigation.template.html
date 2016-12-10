@@ -5,15 +5,15 @@
         </div>
         <ul class="nav navbar-nav ">
             <li><a href="#/vinyls">Vinyls</a></li>
-            <li ng-show="navvm.isLoggedIn()"><a href="#/vinyls/new">Add vinyl</a></li>
+            <li ng-show="vm.isLoggedIn()"><a href="#/vinyls/new">Add vinyl</a></li>
             <li><a href="#/artists">Artists</a></li>
-            <li ng-show="navvm.isLoggedIn()"><a href="#/artists/new">Add artist</a></li>
+            <li ng-show="vm.isLoggedIn()"><a href="#/artists/new">Add artist</a></li>
             <li><a href="#/users">Users</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li ng-hide="navvm.isLoggedIn()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
-            <li ng-show="navvm.isLoggedIn()"><a href="#/users/{{navvm.currentUser()._id}}"><span class="glyphicon glyphicon-user"></span> {{navvm.currentUser()._id}}</a></li>
-            <li ng-show="navvm.isLoggedIn()"><a href="" ng-click="navvm.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li ng-hide="vm.isLoggedIn()"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+            <li ng-show="vm.isLoggedIn()"><a href="#/users/{{vm.currentUser()._id}}"><span class="glyphicon glyphicon-user"></span> {{vm.currentUser()._id}}</a></li>
+            <li ng-show="vm.isLoggedIn()"><a href="" ng-click="vm.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>

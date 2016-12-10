@@ -18,7 +18,7 @@
     <h3>
         average rating
     </h3>
-    <star-rating ng-model="vm.vinyl.averageRating" is-read-only="true"></star-rating>
+    <star-rating rating-value="vm.vinyl.averageRating" is-read-only="true"></star-rating>
     <h3>
         year
     </h3>
@@ -26,7 +26,7 @@
 
     <tracklist-editor tracklist="vm.vinyl.tracklist" is-read-only="true"></tracklist-editor>
 
-    <reviews product="vm.vinyl" update-method="vm.updateVinylReview"></reviews>
+    <reviews reviews="vm.vinyl.reviews" update-review="vm.updateVinylReview(review)"></reviews>
 
     <div ng-show="vm.isOwner">
         <a href="#/vinyls/{{vm.vinyl._id}}/edit/">
@@ -34,5 +34,5 @@
         </a>
         <button type="button" class="btn btn-danger pull-right" ng-click="vm.deleteVinyl(vm.vinyl)">Delete</button>
     </div>
-
 </div>
+
