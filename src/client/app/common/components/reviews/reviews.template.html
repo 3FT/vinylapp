@@ -9,11 +9,14 @@
             <strong><p>{{review.stars}} Stars</p></strong>
             {{review.body}}
             <cite class="clearfix">—{{review.author}} on {{review.createdOn | date}}</cite>
+            <div ng-show="vm.currentUser === review.author">
+                <a ng-click="vm.editReview($index)">edit</a> <a ng-click="vm.deleteReview($index)">delete</a>
+            </div>
         </blockquote>
     </li>
 </ul>
 <!--  Review Form -->
-<form name="reviewForm" ng-submit="reviewForm.$valid && vm.updateReview({review: vm.review}); vm.addReview(vm.review); " novalidate ng-show="vm.isLoggedIn">
+<form name="reviewForm" novalidate ng-show="vm.isLoggedIn">
     <!--  Live Preview -->
     <blockquote ng-show="vm.review">
         <star-rating rating-value="vm.review.stars" is-read-only="true"></star-rating>
@@ -22,16 +25,19 @@
         <cite class="clearfix">—{{vm.review.author}}</cite>
     </blockquote>
     <!--  Review Form -->
-    <h4>Submit a Review</h4>
+    <h4>{{vm.editionIndex ? "Edit your review" : "Submit a review"}}</h4>
     <fieldset class="form-group">
         <star-rating rating-value="vm.review.stars"></star-rating>
     </fieldset>
     <fieldset class="form-group">
         <textarea ng-model="vm.review.body" class="form-control" placeholder="Write a short review of the record..." title="Review"></textarea>
     </fieldset>
-    <fieldset class="form-group">
-        <input type="submit" class="btn btn-primary" value="Submit Review" />
+    <fieldset class="form-group" ng-hide="vm.editionIndex">
+        <input type="submit" class="btn btn-primary" value="Submit Review" ng-click="reviewForm.$valid && vm.addReview(vm.review)"/>
+    </fieldset>
+    <fieldset class="form-group" ng-show="vm.editionIndex">
+        <input type="submit" class="btn btn-primary" value="Update Review" ng-click="reviewForm.$valid && vm.updateReview(vm.review, vm.editionIndex)"/>
+        <input class="btn btn-danger" value="Cancel" ng-click="vm.clearReviewForm()"/>
     </fieldset>
 </form>
-
 

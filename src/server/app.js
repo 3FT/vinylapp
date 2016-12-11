@@ -59,7 +59,8 @@ app.use(express.static('./public/'));
 
 
 switch (environment) {
-    case 'build':
+    case ('production'):
+    case ('build'):
         console.log('** BUILD **');
         app.use(express.static(projectDir + './build/'));
         app.use('/*', express.static(projectDir + './build/index.html'));

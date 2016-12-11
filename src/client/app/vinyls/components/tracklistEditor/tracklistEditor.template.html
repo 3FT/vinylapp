@@ -24,7 +24,7 @@
     </li>
 </ul>
 <!--the input form for adding new tracks-->
-<form ng-hide="vm.isReadOnly" class="form-inline" ng-submit="tvm.addTrack(vm.track, vm.tracklist)">
+<form ng-hide="vm.isReadOnly" class="form-inline" ng-submit="vm.addTrack(vm.track, vm.tracklist)">
     <fieldset class="form-group">
         <label for="track-title">track title</label>
         <input class="form-control" type="text" id="track-title" ng-model="vm.track.title" placeholder="Enter track name here..." required>
@@ -32,7 +32,7 @@
     <fieldset class="form-group">
         <label for="track-duration">track duration</label>
         <span>
-                <input ng-model="tvm.track.duration.minutes" type="number" class="form-control" placeholder="00" min="0" max="60" step="1" required>
+                <input ng-model="vm.track.duration.minutes" type="number" class="form-control" placeholder="00" min="0" max="60" step="1" required>
                 <span>:</span>
                 <input id="track-duration" ng-model="vm.track.duration.seconds" type="number" class="form-control" placeholder="00" min="0" max="59" step="1" required>
         </span>

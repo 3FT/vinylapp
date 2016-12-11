@@ -1,9 +1,9 @@
 (function() {
 
     angular.module('vinylApp').controller('UsersEditCtrl', ['$routeParams',
-        'usersData', '$location', UsersEditCtrl]);
+        'usersData', '$location', 'toastrNotification', UsersEditCtrl]);
 
-    function UsersEditCtrl($routeParams, usersData, $location) {
+    function UsersEditCtrl($routeParams, usersData, $location, toastrNotification) {
         var vm = this;
 
         vm.user = usersData.getUser($routeParams.id);
@@ -15,9 +15,8 @@
 
             } else {
                 usersData.updateUser(user)
-                    //.$promise
                     .then(function(res) {
-                        //authentication.saveToken(res.token);
+                        toastrNotification.success('profile updated');
                         $location.path('/users/' + $routeParams.id);
                         console.log(user);
                     })

@@ -24,7 +24,7 @@
     </h3>
     <p>{{vm.vinyl.year}}</p>
     <tracklist-editor tracklist="vm.vinyl.tracklist" is-read-only="true"></tracklist-editor>
-    <reviews reviews="vm.vinyl.reviews" update-review="vm.updateVinylReview(review)"></reviews>
+    <reviews reviews="vm.vinyl.reviews" update-method="vm.updateVinylReview(review)"></reviews>
     <div ng-show="vm.isOwner">
         <a href="#/vinyls/{{vm.vinyl._id}}/edit/">
             <button type="button" class="btn btn-warning pull-right">Edit</button>

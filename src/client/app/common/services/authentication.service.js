@@ -45,7 +45,6 @@
         var login = function(user) {
             return $http.post('/auth/login', user).then(function(res) {
                 console.log(res);
-                debugger;
                 saveToken(res.data.token);
             });
         };

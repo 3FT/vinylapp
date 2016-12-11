@@ -1,4 +1,5 @@
-(function () {
+(function() {
+'use strict';
 
     angular.module('vinylApp').controller('registerCtrl',
         ['$location', 'authentication', registerCtrl]);
@@ -19,9 +20,9 @@
                      $location.path('/');
                  })
                  .catch(function (err) {
-                     console.log(err);
                      vm.errMessage = err.data.message;
                  });
          };
      }
+
 }());

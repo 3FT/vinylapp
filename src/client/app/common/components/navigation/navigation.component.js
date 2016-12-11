@@ -12,17 +12,17 @@
     });
 
     function NavigationController($location, authentication) {
-        var navvm = this;
+        var vm = this;
 
-        navvm.isLoggedIn = function(){
+        vm.isLoggedIn = function(){
             return authentication.isLoggedIn();
         };
 
-        navvm.currentUser = function(){
+        vm.currentUser = function(){
             return authentication.currentUser();
         };
 
-        navvm.logOut = function (){
+        vm.logOut = function (){
             authentication.logout();
             $location.path('/');
         };

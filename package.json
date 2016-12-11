@@ -5,17 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specifi ed\" && exit 1",
-    "start": "gulp serve-build"
+    "start": "node ./src/server/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "bootstrap": "^3.3.7",
-    "browser-sync": "^2.18.2",
     "express": "^4.14.0",
     "express-jwt": "^5.0.0",
-    "gulp": "^3.9.1",
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.6.5",
     "multer": "^1.2.0",

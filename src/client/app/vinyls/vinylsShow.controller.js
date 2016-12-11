@@ -40,10 +40,8 @@
             vinylsData.updateVinylReview(vm.vinyl)
                 .$promise
                     .then(function(){
-                        toastrNotification.success('review added');
+
                     });
-            console.log(reviews);
-            console.log("foo");
         };
     }
 
