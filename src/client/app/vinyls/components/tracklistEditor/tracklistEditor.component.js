@@ -19,8 +19,7 @@
             initTrack();
         };
 
-        vm.removeTrack = function(track, tracklist){
-            var index = tracklist.indexOf(track);
+        vm.removeTrack = function(index, tracklist){
             tracklist.splice(index,1);
         };
 
