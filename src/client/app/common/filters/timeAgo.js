@@ -1,11 +1,9 @@
 (function() {
-'use strict';
 
-    angular.module('vinylApp').factory('time', time);
+    angular.module('vinylApp').filter('timeAgo', function() {
+        return function(input) {
 
-    function time() {
-        var getTime = function (dateAdded) {
-            var time = Date.now() - dateAdded;
+            var time = Date.now() - input;
 
             var timeInSeconds = time / 1000;
 
@@ -41,21 +39,19 @@
                 output = convertTime(timeInSeconds, year);
                 return fullOutput(output, 'year');
             }
+
+            function convertTime(time, unit) {
+                return Math.floor(time / unit);
+            }
+
+            function getPlurial(output) {
+                return (output !== 1 ? 's':'');
+            }
+
+            function fullOutput(output, unitString) {
+                return output + ' ' + unitString + getPlurial(output) + ' ago';
+            }
+
         };
-
-        function convertTime(time, unit) {
-            return Math.floor(time / unit);
-        }
-
-        function getPlurial(output) {
-            return (output !== 1 ? 's':'');
-        }
-
-        function fullOutput(output, unitString) {
-            return output + ' ' + unitString + getPlurial(output) + ' ago';
-        }
-        return {
-            getTime : getTime
-        };
-    }
+    });
 }());

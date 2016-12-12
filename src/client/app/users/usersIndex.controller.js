@@ -1,23 +1,11 @@
-(function () {
+(function() {
 'use strict';
 
-    angular.module('vinylApp').controller('usersIndexCtrl', ['usersData',
-        'time', '$interval', '$scope', usersIndexCtrl]);
+    angular.module('vinylApp').controller('usersIndexCtrl', ['usersData', usersIndexCtrl]);
 
-    function usersIndexCtrl (usersData, time, $interval, $scope) {
+    function usersIndexCtrl(usersData) {
         var vm = this;
         vm.users = usersData.getAllUsers();
-
-        vm.getDateJoined = function(dateJoined) {
-            return time.getTime(dateJoined);
-        };
-
-        var interval = $interval(function(){
-            vm.getDateJoined();
-        }, 1000);
-
-        $scope.$on('$destroy', function () {
-            $interval.cancel(interval);
-        });
     }
+
 }());

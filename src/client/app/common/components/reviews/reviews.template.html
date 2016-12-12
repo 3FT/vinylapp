@@ -32,10 +32,10 @@
     <fieldset class="form-group">
         <textarea ng-model="vm.review.body" class="form-control" placeholder="Write a short review of the record..." title="Review"></textarea>
     </fieldset>
-    <fieldset class="form-group" ng-hide="vm.editionIndex">
+    <fieldset class="form-group" ng-hide="vm.editionIndex == false">
         <input type="submit" class="btn btn-primary" value="Submit Review" ng-click="reviewForm.$valid && vm.addReview(vm.review)"/>
     </fieldset>
-    <fieldset class="form-group" ng-show="vm.editionIndex">
+    <fieldset class="form-group" ng-show="vm.editionIndex == false">
         <input type="submit" class="btn btn-primary" value="Update Review" ng-click="reviewForm.$valid && vm.updateReview(vm.review, vm.editionIndex)"/>
         <input class="btn btn-danger" value="Cancel" ng-click="vm.clearReviewForm()"/>
     </fieldset>

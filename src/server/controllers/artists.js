@@ -7,7 +7,7 @@ var storage = multer.diskStorage({
     filename: function (req, file, cb) {
         var fileName = file.originalname;
 
-        if (!req.body[file.fieldname]) {req.body[file.fieldname] = []}
+        if (!req.body[file.fieldname]) {req.body[file.fieldname] = [];}
 
         req.body[file.fieldname].push('/uploads/artists/' + fileName);
         cb(null, fileName);

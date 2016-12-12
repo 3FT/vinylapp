@@ -61,13 +61,22 @@
 
         };
 
+        var getArtistNames = function() {
+            return getAllArtists()
+                .$promise
+                .then(function(artists) {
+                    return artists.map(function(artist) {return artist._id;});
+                });
+        };
+
         return {
             getAllArtists: getAllArtists,
             getArtist: getArtist,
             createArtist: createArtist,
             deleteArtist: deleteArtist,
             updateArtist: updateArtist,
-            updateArtistFiles: updateArtistFiles
+            updateArtistFiles: updateArtistFiles,
+            getArtistNames: getArtistNames
         };
     }
 

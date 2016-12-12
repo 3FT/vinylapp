@@ -1,25 +1,11 @@
 (function () {
 
-    angular.module('vinylApp').controller('vinylsIndexCtrl',
-        ['vinylsData', 'time', '$interval', '$scope', vinylsIndexCtrl]);
+    angular.module('vinylApp').controller('vinylsIndexCtrl', ['vinylsData', vinylsIndexCtrl]);
 
-     function vinylsIndexCtrl (vinylsData, time, $interval, $scope) {
+     function vinylsIndexCtrl (vinylsData) {
          var vm = this;
 
          vm.vinyls = vinylsData.getAllVinyls();
-
-         vm.getTime = function (dateAdded) {
-             return time.getTime(dateAdded);
-         };
-
-         var interval = $interval(function(){
-             vm.getTime();
-         }, 1000);
-
-         $scope.$on('$destroy', function () {
-             $interval.cancel(interval);
-         });
-
      }
 
 }());

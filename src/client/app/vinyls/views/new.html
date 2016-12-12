@@ -3,7 +3,7 @@
     <form>
         <fieldset class="form-group">
             <label for="description">artist</label><br>
-            <input type="text" ng-model="vm.vinyl.artist_id" uib-typeahead="artist._id for artist in vm.artists | filter:$viewValue | limitTo:8" class="form-control">
+            <input type="text" ng-model="vm.vinyl.artist_id" uib-typeahead="name for name in vm.artistNames | filter: $viewValue | limitTo:8" class="form-control">
         </fieldset>
         <fieldset class="form-group">
             <label for="title">album</label>

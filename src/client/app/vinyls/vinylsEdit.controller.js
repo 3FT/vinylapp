@@ -6,16 +6,12 @@
     function vinylsEditCtrl(vinylsData, artistsData, $routeParams, $location, toastrNotification) {
         var vm = this;
 
-        // vm.vinyl = vinylsData.getVinyl($routeParams.id);
+        vm.vinyl = vinylsData.getVinyl($routeParams.id);
 
-        vinylsData.getVinyl($routeParams.id)
-            .$promise
-            .then(function(data) {
-                vm.vinyl = data;
-              //  debugger;
+        artistsData.getArtistNames()
+            .then(function(artistNames) {
+                vm.artistNames = artistNames;
             });
-
-        vm.artists = artistsData.getAllArtists();
 
         vm.updateVinyl = function(vinyl){
             vinylsData.updateVinyl(vinyl)
@@ -27,9 +23,7 @@
                             $location.path('/vinyls/' + vinyl._id);
                         });
                 });
-
         };
-
     }
 
 }());

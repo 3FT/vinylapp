@@ -1,16 +1,14 @@
 <div class="container">
-
     <div class="row">
         <div ng-repeat="user in vm.users" class="col-sm-4">
             <a ng-href="#/users/{{user._id}}">
-
                 <gravatar email="user.email"></gravatar>
                 <h3>
                     {{user._id}}
                 </h3>
             </a>
                 <p>
-                    joined {{vm.getDateJoined(user.dateJoined)}}
+                    joined <time-elapsed input="user.dateJoined"></time-elapsed>
                 </p>
         </div>
     </div>

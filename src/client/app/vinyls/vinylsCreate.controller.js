@@ -10,7 +10,10 @@
             tracklist: []
         };
 
-        vm.artists = artistsData.getAllArtists();
+        artistsData.getArtistNames()
+             .then(function(artistNames) {
+                 vm.artistNames = artistNames;
+             });
 
         vm.createVinyl = function(vinyl) {
             vinylsData.createVinyl(vinyl)

@@ -61,7 +61,6 @@ module.exports.createVinyl = function(req, res, next) {
 };
 
 module.exports.updateVinyl = function(req, res, next) {
-        console.log("updating: " + req.params.id);
     Vinyl.findById(req.params.id, function (err, vinyl) {
         /* jshint ignore:start */
         for (var attrname in req.body) { vinyl[attrname] = req.body[attrname];}
@@ -144,15 +143,20 @@ module.exports.vinylReviewsFilter = function(req, res, next) {
 };
 
 module.exports.updateAverageRating = function(req, res, next) {
-    var sum = 0;
-    var reviews = req.body.reviews;
 
-    for (var i = 0; i < reviews.length; i++) {
-        sum += reviews[i].stars;
+    if (req.body.reviews.length) {
+        var sum = 0;
+        var reviews = req.body.reviews;
+
+        for (var i = 0; i < reviews.length; i++) {
+            sum += reviews[i].stars;
+        }
+
+        var avg = sum / reviews.length;
+        req.body.averageRating = avg;
+    } else {
+        req.body.averageRating = null;
     }
-
-    var avg = sum / reviews.length;
-    req.body.averageRating = avg;
 
     next();
 };

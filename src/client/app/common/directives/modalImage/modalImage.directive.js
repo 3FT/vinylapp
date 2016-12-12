@@ -21,13 +21,8 @@
             scope: $scope
         };
 
-
         $scope.open = function() {
-
-            console.log("modal");
-            console.log($scope.url);
             $uibModal.open(modOp);
-
-        }
+        };
     }
 })();

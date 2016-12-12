@@ -1,18 +1,17 @@
 <div class="container">
     <div class="row">
-        <div ng-repeat="artist in vm.artists" class="col-sm-4">
+        <div ng-repeat="artist in vm.artists" class="col-sm-4" >
             <a ng-href="#/artists/{{artist._id}}">
-            <img ng-src="{{artist.images[0]}}" style="width: 100%">
+            <img ng-src="{{artist.images[0] || 'images/artist-default.jpg'}}" class="img-responsive">
                 <h2>
                     {{artist._id}}
-
                 </h2>
             </a>
                 <span class="label label-info">
                     {{artist.style}}
                 </span>
-                <p>added by: {{artist.addedBy}}</p>
-                <p>{{vm.getTime(artist.dateAdded)}}</p>
+                <p>added by: <a ng-href="#/users/{{artist.addedBy}}">{{artist.addedBy}}</a></p>
+                <time-elapsed input="artist.dateAdded"></time-elapsed>
         </div>
     </div>
 </div>

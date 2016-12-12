@@ -10,7 +10,7 @@
     <p>{{vm.artist.style}}</p>
     <div active="active" uib-carousel>
                 <div uib-slide ng-repeat="image in vm.artist.images track by $index" index="$index">
-                    <img ng-src="{{image}}" style="width:100%;">
+                    <img ng-src="{{image}}" style="width: 100%">
                 </div>
     </div>
     <div ng-show="vm.isOwner">
